@@ -466,7 +466,8 @@
 <h3 id="查看当前使用的内核"><a href="#查看当前使用的内核" class="headerlink" title="查看当前使用的内核"></a>查看当前使用的内核</h3><p>uname -r</p>
 <h3 id="查看当前拥有的内核"><a href="#查看当前拥有的内核" class="headerlink" title="查看当前拥有的内核"></a>查看当前拥有的内核</h3><p>awk -F&#39; ‘$1==”menuentry “ {print i++ “ : “ $2}’ /etc/grub2.cfg</p>
 <h3 id="查看指定端口是否被占用"><a href="#查看指定端口是否被占用" class="headerlink" title="查看指定端口是否被占用"></a>查看指定端口是否被占用</h3><p>netstat -tlnp|grep 80</p>
-<h3 id="禁ping指令"><a href="#禁ping指令" class="headerlink" title="禁ping指令"></a>禁ping指令</h3><p>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all<br>###linux安装bt<br>yum install -y wget &amp;&amp; wget -O install.sh <a href="http://123.129.198.197/install/install_6.0.sh" target="_blank" rel="noopener">http://123.129.198.197/install/install_6.0.sh</a> &amp;&amp; sh install.sh</p>
+<h3 id="禁ping指令"><a href="#禁ping指令" class="headerlink" title="禁ping指令"></a>禁ping指令</h3><p>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</p>
+<h3 id="linux安装bt"><a href="#linux安装bt" class="headerlink" title="linux安装bt"></a>linux安装bt</h3><p>yum install -y wget &amp;&amp; wget -O install.sh <a href="http://123.129.198.197/install/install_6.0.sh" target="_blank" rel="noopener">http://123.129.198.197/install/install_6.0.sh</a> &amp;&amp; sh install.sh</p>
 <h3 id="更改宝塔端口"><a href="#更改宝塔端口" class="headerlink" title="更改宝塔端口"></a>更改宝塔端口</h3><p>echo ‘1813’ &gt; /www/server/panel/data/port.pl &amp;&amp; service bt restart</p>
 <h3 id="面板修复"><a href="#面板修复" class="headerlink" title="面板修复"></a>面板修复</h3><p>curl <a href="http://download.bt.cn/install/update6.sh|bash" target="_blank" rel="noopener">http://download.bt.cn/install/update6.sh|bash</a></p>
 <h3 id="根据域名查IP，需要手动安装"><a href="#根据域名查IP，需要手动安装" class="headerlink" title="根据域名查IP，需要手动安装"></a>根据域名查IP，需要手动安装</h3><p>nslookup</p>
@@ -698,30 +699,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020/05/19/images-lift/">
+                <a href="/2020/05/19/documentation/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="images-lift">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="The Linux documentation">
                         
-                        <span class="card-title">images-lift</span>
+                        <span class="card-title">The Linux documentation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            For storing photos, temporarily
-
+                            Commonly used Linux documents, memos, in the forgotten or official website query time can be directly used in this query
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -730,6 +731,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
