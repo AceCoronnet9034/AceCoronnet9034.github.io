@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="The Linux documentation, yuesezhenmei">
+    <meta name="keywords" content="CentOS挂载lvm分区重名问题的解决方法, yuesezhenmei">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>The Linux documentation | yuesezhenmei</title>
+    <title>CentOS挂载lvm分区重名问题的解决方法 | yuesezhenmei</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">The Linux documentation</h1>
+                    <h1 class="description center-align post-title">CentOS挂载lvm分区重名问题的解决方法</h1>
                 </div>
             </div>
         </div>
@@ -442,14 +442,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-05-19
+                    2020-06-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-05-20
+                    2020-06-01
                 </div>
                 
 
@@ -463,19 +463,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Commonly used Linux documents, memos, in the forgotten or official website query time can be directly used in this query</p>
-<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h3 id="卸载锐速"><a href="#卸载锐速" class="headerlink" title="卸载锐速"></a>卸载锐速</h3><p>chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.sh uninstall -f</p>
-<h3 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h3><p>netstat -tlunp</p>
-<h4 id="Windows查看端口"><a href="#Windows查看端口" class="headerlink" title="Windows查看端口"></a>Windows查看端口</h4><p>netstat -ano<br>linux找不到netstat时先安装net-tools<br>yum install -y net-tools</p>
-<h3 id="邮件端口"><a href="#邮件端口" class="headerlink" title="邮件端口"></a>邮件端口</h3><p>25、109、110、143、465、995、993</p>
-<h3 id="查看当前使用的内核"><a href="#查看当前使用的内核" class="headerlink" title="查看当前使用的内核"></a>查看当前使用的内核</h3><p>uname -r</p>
-<h3 id="查看当前拥有的内核"><a href="#查看当前拥有的内核" class="headerlink" title="查看当前拥有的内核"></a>查看当前拥有的内核</h3><p>awk -F&#39; ‘$1==”menuentry “ {print i++ “ : “ $2}’ /etc/grub2.cfg</p>
-<h3 id="查看指定端口是否被占用"><a href="#查看指定端口是否被占用" class="headerlink" title="查看指定端口是否被占用"></a>查看指定端口是否被占用</h3><p>netstat -tlnp|grep 80</p>
-<h3 id="禁ping指令"><a href="#禁ping指令" class="headerlink" title="禁ping指令"></a>禁ping指令</h3><p>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</p>
-<h3 id="linux安装bt"><a href="#linux安装bt" class="headerlink" title="linux安装bt"></a>linux安装bt</h3><p>yum install -y wget &amp;&amp; wget -O install.sh <a href="http://123.129.198.197/install/install_6.0.sh" target="_blank" rel="noopener">http://123.129.198.197/install/install_6.0.sh</a> &amp;&amp; sh install.sh</p>
-<h3 id="更改宝塔端口"><a href="#更改宝塔端口" class="headerlink" title="更改宝塔端口"></a>更改宝塔端口</h3><p>echo ‘1813’ &gt; /www/server/panel/data/port.pl &amp;&amp; service bt restart</p>
-<h3 id="面板修复"><a href="#面板修复" class="headerlink" title="面板修复"></a>面板修复</h3><p>curl <a href="http://download.bt.cn/install/update6.sh|bash" target="_blank" rel="noopener">http://download.bt.cn/install/update6.sh|bash</a></p>
-<h3 id="根据域名查IP，需要手动安装"><a href="#根据域名查IP，需要手动安装" class="headerlink" title="根据域名查IP，需要手动安装"></a>根据域名查IP，需要手动安装</h3><p>nslookup</p>
+                <p>今天一个朋友的服务器硬盘出现问题，换了新硬盘安装好系统后，挂载老硬盘时出现了问题， 在linux下使用新硬盘安装系统，安装好以后再挂载原来的硬盘，分区格式全为系统默认分区，系统默认使用的<br>是lvm格式，并且默认的卷都是 VolGroup00，好了，知道问题的原因就好办了，下面我们来解决这个问题</p>
+<p>使用 pvs 查看显示如下：</p>
+<p>[root@localhost ~]# pvs<br>PV VG Fmt Attr PSize PFree<br>/dev/sda2 VolGroup00 lvm2 a- 372.50G 0<br>/dev/sdb2 VolGroup00 lvm2 a- 136.62G 0</p>
+<p>发现可以正确认别到两个VG，但是同名，如何挂载呢？<br>解决办法是，将原来的VG更名，解决冲突即可挂载。</p>
+<p>重命名格式为：vgrename VolGroup00 VolGroup01<br>此时会提示：<br>[root@localhost ~]# vgrename VolGroup00 VolGroup01<br>Found more than one VG called VolGroup00. Please supply VG uuid.</p>
+<p>原因是存在两个 VolGroup00，修改的方法他已经提示了要指定 VG uuid即可。</p>
+<p>查看VG uuid的命令为：</p>
+<p>[root@localhost ~]# vgs -v<br>Finding all volume groups<br>Finding volume group “VolGroup00”<br>Finding volume group “VolGroup00”<br>VG Attr Ext #PV #LV #SN VSize VFree VG UUID<br>VolGroup00 wz–n- 32.00M 120372.50G 0 dcHa6G-abU2-Xfq8-EPBm-jBLj-sf18-O5uH0U<br>VolGroup00 wz–n- 32.00M 120136.62G 0 OF8g7h-PQJB-9D9z-yPxn-1kfY-Advq-YbNHJ9</p>
+<p>查到VG uuid以后，再次执行改名：<br>[root@localhost ~]# vgrename OF8g7h-PQJB-9D9z-yPxn-1kfY-Advq-YbNHJ9 VolGroup01<br>Volume group “VolGroup00” still has active LVs</p>
+<p>修改成功以后，再执行：lvscan</p>
+<p>[root@localhost ~]# lvscan<br>inactive ‘/dev/VolGroup01/LogVol00’ [130.84 GB] inherit<br>inactive ‘/dev/VolGroup01/LogVol01’ [1.94 GB] inherit<br>ACTIVE ‘/dev/VolGroup00/LogVol00’ [367.09 GB] inherit<br>ACTIVE ‘/dev/VolGroup00/LogVol01’ [5.41 GB] inherit</p>
+<p>可以看到新修改的VolGroup01是inactive状态。</p>
+<p>再使用vgchange 加载 VolGroup01<br>[root@localhost ~]# vgchange -ay /dev/VolGroup01<br>2 logical volume(s) in volume group “VolGroup01” now active</p>
+<p>再执行 ：lvscan<br>[root@localhost ~]# lvscan<br>ACTIVE ‘/dev/VolGroup01/LogVol00’ [134.69 GB] inherit<br>ACTIVE ‘/dev/VolGroup01/LogVol01’ [1.94 GB] inherit<br>ACTIVE ‘/dev/VolGroup00/LogVol00’ [367.09 GB] inherit<br>ACTIVE ‘/dev/VolGroup00/LogVol01’ [5.41 GB] inherit</p>
+<p>可以发现VolGroup01已经是ACTIVE状态了。</p>
+<p>最后 mount 就可以</p>
+<p>[root@localhost ~]# mount /dev/VolGroup01/LogVol00 /data/www</p>
+<p>至此，全部完成。</p>
 
             </div>
             <hr/>
@@ -501,7 +506,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/05/19/documentation/">http://yoursite.com/2020/05/19/documentation/</a>
+                    <a href="http://yoursite.com/2020/06/01/CentOS%E6%8C%82%E8%BD%BDlvm%E5%88%86%E5%8C%BA%E9%87%8D%E5%90%8D%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">http://yoursite.com/2020/06/01/CentOS%E6%8C%82%E8%BD%BDlvm%E5%88%86%E5%8C%BA%E9%87%8D%E5%90%8D%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -708,19 +713,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/06/01/CPU%E5%8D%A0%E6%BB%A1100-%E8%B4%9F%E8%BD%BD100-%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+                <a href="/2020/06/01/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="CPU占满100%负载100%解决办法">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Download-Software And Script">
                         
-                        <span class="card-title">CPU占满100%负载100%解决办法</span>
+                        <span class="card-title">Download-Software And Script</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这篇文章主要为大家详细介绍了Linux宝塔面板CPU占满100%，负载100%网站缓慢解决方法最近一用户总发现他的服务器经常CPU跑满，根据用户描述他最近打开宝塔面板总是显示服务器CPU使用率100%.先看下他们他的服务器的性能截图http
+                            The website is built based on hexo. It is mainly used for storing common software and basic scripts to avoid local loss.
                         
                     </div>
                     <div class="publish-info">
@@ -742,27 +747,27 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/19/documentation/">
+                <a href="/2020/06/01/SSR%E5%AE%89%E8%A3%85/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="The Linux documentation">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="SSR安装">
                         
-                        <span class="card-title">The Linux documentation</span>
+                        <span class="card-title">SSR安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Commonly used Linux documents, memos, in the forgotten or official website query time can be directly used in this query
+                            这里介绍脚本安装方式，脚本已提前制作好，只需要按下面方式执行即可1、wget –no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/ted
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-01
                             </span>
                         <span class="publish-author">
                             
@@ -772,7 +777,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
