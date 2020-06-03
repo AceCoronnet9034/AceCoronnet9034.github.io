@@ -496,12 +496,14 @@
 <p>@Configuration<br>@EnableSwagger2<br>@EnableSwaggerBootstrapUI<br>public class SwaggerConfiguration {<br>    @Bean<br>    public Docket createRestApi() {<br>        return new Docket(DocumentationType.SWAGGER_2)<br>                .apiInfo(apiInfo())<br>                .select()<br>                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))<br>                .paths(PathSelectors.any())<br>                .build();<br>    }<br><br>   \ private ApiInfo apiInfo() {<br>        \return new ApiInfoBuilder()<br>                .title(“接口文档”)<br>                .description(“接口文档”)<br>                .build();<br>    }<br>}</p>
 <p>这里官网有一个对新手不太友好的小坑，那就是Docket中的apis中设置包的扫描路径，我之前是直接使<br>用官网的配置类，没有改变包的扫描路径，导致文档没有显示接口，而改成RequestHandlerSelectors.withClassAnnotation(RestController.class)之后就可以了，这样算是使用了软编码吧！</p>
 <blockquote>
-<p>访问地址<br>swagger-bootstrap-ui默认访问地址是：http://${host}:${port}/doc.html</p>
+<p>访问地址</p>
 </blockquote>
+<p>swagger-bootstrap-ui默认访问地址是：http://${host}:${port}/doc.html</p>
 <blockquote>
-<p>swagger2注解<br>给Controller类添加swagger2注解就生成相应的接口文档了。<br>例如:</p>
+<p>swagger2注解</p>
 </blockquote>
-<p>@Api(value=”/test1”, tags=”测试接口模块”)<br>@RestController<br>public class testContro {<br>    @ApiOperation(“test”)<br>    @GetMapping(“/ha”)<br>    public String test(){<br>        return “test成功”;<br>    }<br>    @ApiOperation(“Area删除”)<br>    @GetMapping(“/a”)<br>    public String ha(){<br>        return “Area删除成功”;<br>    }<br>}</p>
+<p>给Controller类添加swagger2注解就生成相应的接口文档了。</p>
+<p>例如:<br>@Api(value=”/test1”, tags=”测试接口模块”)<br>@RestController<br>public class testContro {<br>    @ApiOperation(“test”)<br>    @GetMapping(“/ha”)<br>    public String test(){<br>        return “test成功”;<br>    }<br>    @ApiOperation(“Area删除”)<br>    @GetMapping(“/a”)<br>    public String ha(){<br>        return “Area删除成功”;<br>    }<br>}</p>
 <p>运行项目之后就可以看到下面的效果：<br><img src="/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/6OdusG7zl5SP4gC.png" alt="效果"></p>
 <blockquote>
 <p>最后</p>
