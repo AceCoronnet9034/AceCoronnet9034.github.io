@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="The Linux documentation, yuesezhenmei">
+    <meta name="keywords" content="接口文档swagger-bootstrap-ui的使用, yuesezhenmei">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>The Linux documentation | yuesezhenmei</title>
+    <title>接口文档swagger-bootstrap-ui的使用 | yuesezhenmei</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">The Linux documentation</h1>
+                    <h1 class="description center-align post-title">接口文档swagger-bootstrap-ui的使用</h1>
                 </div>
             </div>
         </div>
@@ -440,11 +440,16 @@
 
             <div class="post-info">
                 
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2020-06-04
+                </div>
+                
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-05-20
+                    2020-06-04
                 </div>
                 
 
@@ -453,29 +458,59 @@
                 
 
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Commonly used Linux documents, memos, in the forgotten or official website query time can be directly used in this query</p>
-<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h3 id="卸载锐速"><a href="#卸载锐速" class="headerlink" title="卸载锐速"></a>卸载锐速</h3><p>chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.sh uninstall -f</p>
-<h3 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h3><p>netstat -tlunp</p>
-<h4 id="Windows查看端口"><a href="#Windows查看端口" class="headerlink" title="Windows查看端口"></a>Windows查看端口</h4><p>netstat -ano<br>linux找不到netstat时先安装net-tools<br>yum install -y net-tools</p>
-<h3 id="邮件端口"><a href="#邮件端口" class="headerlink" title="邮件端口"></a>邮件端口</h3><p>25、109、110、143、465、995、993</p>
-<h3 id="查看当前使用的内核"><a href="#查看当前使用的内核" class="headerlink" title="查看当前使用的内核"></a>查看当前使用的内核</h3><p>uname -r</p>
-<h3 id="查看当前拥有的内核"><a href="#查看当前拥有的内核" class="headerlink" title="查看当前拥有的内核"></a>查看当前拥有的内核</h3><p>awk -F&#39; ‘$1==”menuentry “ {print i++ “ : “ $2}’ /etc/grub2.cfg</p>
-<h3 id="查看指定端口是否被占用"><a href="#查看指定端口是否被占用" class="headerlink" title="查看指定端口是否被占用"></a>查看指定端口是否被占用</h3><p>netstat -tlnp|grep 80</p>
-<h3 id="禁ping指令"><a href="#禁ping指令" class="headerlink" title="禁ping指令"></a>禁ping指令</h3><p>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</p>
-<h3 id="linux安装bt"><a href="#linux安装bt" class="headerlink" title="linux安装bt"></a>linux安装bt</h3><p>yum install -y wget &amp;&amp; wget -O install.sh <a href="http://123.129.198.197/install/install_6.0.sh" target="_blank" rel="noopener">http://123.129.198.197/install/install_6.0.sh</a> &amp;&amp; sh install.sh</p>
-<h3 id="更改宝塔端口"><a href="#更改宝塔端口" class="headerlink" title="更改宝塔端口"></a>更改宝塔端口</h3><p>echo ‘1813’ &gt; /www/server/panel/data/port.pl &amp;&amp; service bt restart</p>
-<h3 id="面板修复"><a href="#面板修复" class="headerlink" title="面板修复"></a>面板修复</h3><p>curl <a href="http://download.bt.cn/install/update6.sh|bash" target="_blank" rel="noopener">http://download.bt.cn/install/update6.sh|bash</a></p>
-<h3 id="根据域名查IP，需要手动安装"><a href="#根据域名查IP，需要手动安装" class="headerlink" title="根据域名查IP，需要手动安装"></a>根据域名查IP，需要手动安装</h3><p>nslookup</p>
+                <p>相信使用前后端分离的工程师都对接口文档折磨过。无论是前端调用后端，还是后端调用后端，都期望<br>有一个好的接口文档。而Swagger，我个人理解就是把相关的信息存储在它定义的描述文件里面（yml或<br>json格式），再通过维护这个描述文件可以去更新接口文档，以及生成各端代码，它能够很好地化解前<br>面所说的尴尬。</p>
+<p>这样项目开始时期，只要前端跟后端定义好返回的数据格式，就可以根据接口文档进行统一的规范，这<br>样数据规范起来之后，前端就不需要等到后端开发好接口才能知道具体的数据格式，前端使用mockjs模<br>拟数据进行开发，大大节省了时间，同时也减少了不必要的沟通过程。</p>
+<p>个人感觉原生的swagger-UI不太友好，所以在网上找到了swagger-bootstrap-ui，这是国人开发的ui包<br>，感觉非常不错。</p>
+<blockquote>
+<p>快速开始</p>
+</blockquote>
+<blockquote>
+<p>引入maven包</p>
+</blockquote>
+<p>由于是springfox-swagger的增强UI包,所以基础功能依然依赖Swagger,springfox-swagger的jar包必须<br>引入</p>
+<dependency>
+ <groupId>io.springfox</groupId>
+ <artifactId>springfox-swagger2</artifactId>
+ <version>2.9.2</version>
+</dependency>
+
+<blockquote>
+<p>然后引入SwaggerBootstrapUi的jar包</p>
+</blockquote>
+<dependency>
+  <groupId>com.github.xiaoymin</groupId>
+  <artifactId>swagger-bootstrap-ui</artifactId>
+  <version>1.9.6</version>
+</dependency>
+
+<p>当前最新的是1.9.6版本</p>
+<blockquote>
+<p>编写Swagger2Config配置文件</p>
+</blockquote>
+<p>Swagger2Config配置文件如下：</p>
+<p>@Configuration<br>@EnableSwagger2<br>@EnableSwaggerBootstrapUI<br>public class SwaggerConfiguration {<br>    @Bean<br>    public Docket createRestApi() {<br>        return new Docket(DocumentationType.SWAGGER_2)<br>                .apiInfo(apiInfo())<br>                .select()<br>                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))<br>                .paths(PathSelectors.any())<br>                .build();<br>    }<br><br>   \ private ApiInfo apiInfo() {<br>        \return new ApiInfoBuilder()<br>                .title(“接口文档”)<br>                .description(“接口文档”)<br>                .build();<br>    }<br>}</p>
+<p>这里官网有一个对新手不太友好的小坑，那就是Docket中的apis中设置包的扫描路径，我之前是直接使<br>用官网的配置类，没有改变包的扫描路径，导致文档没有显示接口，而改成RequestHandlerSelectors.withClassAnnotation(RestController.class)之后就可以了，这样算是使用了软编码吧！</p>
+<blockquote>
+<p>访问地址<br>swagger-bootstrap-ui默认访问地址是：http://${host}:${port}/doc.html</p>
+</blockquote>
+<blockquote>
+<p>swagger2注解<br>给Controller类添加swagger2注解就生成相应的接口文档了。<br>例如:</p>
+</blockquote>
+<p>@Api(value=”/test1”, tags=”测试接口模块”)<br>@RestController<br>public class testContro {<br>    @ApiOperation(“test”)<br>    @GetMapping(“/ha”)<br>    public String test(){<br>        return “test成功”;<br>    }<br>    @ApiOperation(“Area删除”)<br>    @GetMapping(“/a”)<br>    public String ha(){<br>        return “Area删除成功”;<br>    }<br>}</p>
+<p>运行项目之后就可以看到下面的效果：<br><img src="/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/6OdusG7zl5SP4gC.png" alt="效果"></p>
+<blockquote>
+<p>最后</p>
+</blockquote>
+<p>有了接口文档之后，当前后端分离开发的时候，只需要丢一个测试环境的文档地址过去给前端就可以了<br>，直接看着文档进行参数对接，同时这个接口文档的调试功能也是非常不错的，有时候懒得写单元测试<br>，直接写一个查询的方法获取数据，再调用请求接口进行调试也是非常方便的。</p>
+<blockquote>
+<p>附</p>
+</blockquote>
+<p><a href="https://github.com/xiaoymin/Swagger-Bootstrap-UI" target="_blank" rel="noopener">swagger-bootstrap-ui 地址</a><br><a href="http://swagger-bootstrap-ui.xiaominfo.com/doc.html" target="_blank" rel="noopener">在线效果体验</a><br><a href="https://www.xiaominfo.com/2018/08/29/swagger-bootstrap-ui-description/" target="_blank" rel="noopener">swagger-bootstrap-ui详解</a></p>
 
             </div>
             <hr/>
@@ -501,7 +536,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/05/19/documentation/">http://yoursite.com/2020/05/19/documentation/</a>
+                    <a href="http://yoursite.com/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/">http://yoursite.com/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -967,65 +1002,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020/06/01/CPU%E5%8D%A0%E6%BB%A1100-%E8%B4%9F%E8%BD%BD100-%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+                <a href="/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="CPU占满100%负载100%解决办法">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="接口文档swagger-bootstrap-ui的使用">
                         
-                        <span class="card-title">CPU占满100%负载100%解决办法</span>
+                        <span class="card-title">接口文档swagger-bootstrap-ui的使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这篇文章主要为大家详细介绍了Linux宝塔面板CPU占满100%，负载100%网站缓慢解决方法最近一用户总发现他的服务器经常CPU跑满，根据用户描述他最近打开宝塔面板总是显示服务器CPU使用率100%.先看下他们他的服务器的性能截图http
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-01
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            gimstyber
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/05/19/documentation/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="The Linux documentation">
-                        
-                        <span class="card-title">The Linux documentation</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Commonly used Linux documents, memos, in the forgotten or official website query time can be directly used in this query
+                            相信使用前后端分离的工程师都对接口文档折磨过。无论是前端调用后端，还是后端调用后端，都期望有一个好的接口文档。而Swagger，我个人理解就是把相关的信息存储在它定义的描述文件里面（yml或json格式），再通过维护这个描述文件可以去更新接
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
                             </span>
                         <span class="publish-author">
                             
@@ -1036,6 +1035,47 @@
                     </div>
                 </div>
 
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/03/MybatisPlus%E4%B8%AD%E8%B0%83%E7%94%A8Oracle%E5%AD%98%E5%82%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MybatisPlus中调用Oracle存储过程">
+                        
+                        <span class="card-title">MybatisPlus中调用Oracle存储过程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            起因
+由于需要将新数据同步到另外的数据库，所以需要使用dblink进行操作，但是dblink不支持写入操作，因此需要调用写好的存储过程才能实现将新数据插入新数据的同时插入旧数据库。准备工作
+预先准备好新旧两个数据库旧的数据库
+
+create
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            gimstyber
+                            
+                        </span>
+                    </div>
+                </div>
                 
             </div>
         </div>
@@ -1052,8 +1092,6 @@
 
 <!-- 代码语言 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
 
 <!-- 代码块复制 -->
 
@@ -1062,14 +1100,8 @@
 
 <!-- 代码块收缩 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
 
 <!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
 
 
     </div>
@@ -1318,6 +1350,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
 </html>
