@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Download-Software And Script, yuesezhenmei">
+    <meta name="keywords" content="web项目中使用支付宝接口, yuesezhenmei">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Download-Software And Script | yuesezhenmei</title>
+    <title>web项目中使用支付宝接口 | yuesezhenmei</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Download-Software And Script</h1>
+                    <h1 class="description center-align post-title">web项目中使用支付宝接口</h1>
                 </div>
             </div>
         </div>
@@ -442,14 +442,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-06-01
+                    2020-06-04
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-06-01
+                    2020-06-04
                 </div>
                 
 
@@ -463,24 +463,112 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>The website is built based on hexo. It is mainly used for storing common software and basic scripts to avoid local loss. At the same time, it is available for other interested fans to download</p>
-<h2 id="Quick-Download"><a href="#Quick-Download" class="headerlink" title="Quick Download"></a>Quick Download</h2><h3 id="Script"><a href="#Script" class="headerlink" title="Script"></a>Script</h3><p><a href="/download/c7-tcp.sh">download-tcp</a></p>
-<p>More info: This script is mainly used to install the replacement kernel before sharp speed. The kernel version is 3.10.0-229.1.2.el7.x86 ʄ, along with changing the network card name</p>
-<p><a href="/download/activate.bat">download-activate</a></p>
-<p>More info: This is the Windows activation script I made by myself, which supports win 2008 server and win 2012 server, various non-server versions of Windows system, server version 2016 and 2019, please use AAct, right click administrator permission to run at runtime</p>
-<p><a href="/download/remote.bat">download-remote</a></p>
-<p>More info: This is a change remote port script, run directly input the new port number to change the default 3389 port to its own custom port, and added a firewall release, added even if the firewall port is still open will not be intercepted.</p>
-<p><a href="/download/关闭危险端口.bat">download-关闭危险端口</a></p>
-<p>More info: It is mainly for Windows dangerous ports. Most of the dangerous ports of Windows are built into the script and closed, including some mail ports. Please use them as required</p>
-<h3 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h3><p><a href="/download/ShadowsocksR-win-4.9.0.zip">download-ssr</a></p>
-<p>More info: The software is mainly used for SSR connection and wall turnover. Please consciously abide by relevant regulations and do not use it for illegal activities</p>
-<p><a href="/download/AAct4.0.x64.exe">download-AAct</a></p>
-<p>More info: Support all Windows activation, personal system or server versions, 2016 and 2019 server please use this tool for activation, built-in office activation</p>
-<p><a href="/download/putty.exe">download-putty</a></p>
-<p>More info: linux ssh tool</p>
-<p><a href="/download/IrisPro.zip">download-Iris</a></p>
-<p>More info: Eye protection software, you can turn on anti-blue light function, better than poor anti-blue light glasses, installation and use of built-in in this compression package</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">You can contact me to add the software and script you need to store</span><br></pre></td></tr></table></figure>
+                <blockquote>
+<p>前言</p>
+</blockquote>
+<p>一直想弄一个有关于支付的第三方接口调用的web项目，网上看了一大堆资料，最后还是选择了使用支付宝。原因有一下两点：</p>
+<ul>
+<li>不用另外注册账户(一直讨厌注册各种账户)</li>
+<li>支付宝有沙箱功能，可以实现虚拟支付，适合拿来练手</li>
+</ul>
+<p>下面就进入正题吧</p>
+<blockquote>
+<p>进入沙箱</p>
+</blockquote>
+<p>支付宝扫码登录蚂蚁金服开放平台之后，在首页的常用功能那里进入沙箱应用，如果是第一次使用，就需要添加功能。参考下图</p>
+<p><img src="/2020/06/04/web%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%94%AF%E4%BB%98%E5%AE%9D%E6%8E%A5%E5%8F%A3/5bceeddeecc05.png" alt></p>
+<blockquote>
+<p>生成RSA密钥</p>
+</blockquote>
+<p>进入沙箱应用之后可以看到信息配置部分需要设置RSA2(SHA256)密钥，由于我已经设置过了，这里就没有相应的截图。</p>
+<p>生成RSA密钥的工具官方也提供了，直接查看生成RSA密钥进入下载工具，并按照步骤就可以生成密钥了</p>
+<blockquote>
+<p>上传密钥</p>
+</blockquote>
+<p>通过上一步生成的密钥，直接在沙箱应用中上传，如果验证通过的话，就可以开始接入代码了。</p>
+<p><img src="/2020/06/04/web%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%94%AF%E4%BB%98%E5%AE%9D%E6%8E%A5%E5%8F%A3/5bceede57b2a9.png" alt></p>
+<blockquote>
+<p>下载demo</p>
+</blockquote>
+<p>在官网中下载demo：<a href="https://docs.open.alipay.com/270/106291/" target="_blank" rel="noopener">https://docs.open.alipay.com/270/106291/</a> ,将demo解压。然后下载沙箱版的支付宝(只支持安卓版)，然后回到沙箱环境中，查看沙箱账号，用买家信息登录。</p>
+<p><img src="/2020/06/04/web%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%94%AF%E4%BB%98%E5%AE%9D%E6%8E%A5%E5%8F%A3/5bceede851d01.png" alt></p>
+<blockquote>
+<p>合并入自己的项目</p>
+</blockquote>
+<p>下面就以一个简单的例子开始，具体步骤如下：</p>
+<ul>
+<li>将解压文件中的jar包放入项目lib中,把 jsp文件 或者自己写的页面复制入项目，</li>
+<li>修改AlipayConfig文件的部分配置</li>
+<li>编写简单的servlet</li>
+<li>运行查看支付</li>
+</ul>
+<p>详细的目录结构如下：</p>
+<p><img src="/2020/06/04/web%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%94%AF%E4%BB%98%E5%AE%9D%E6%8E%A5%E5%8F%A3/5bceede9e4a47.png" alt></p>
+<p>AlipayConfig:</p>
+<p>public class AlipayConfig {</p>
+<p>//↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓</p>
+<pre><code>// 应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号
+public static String app_id = &quot;填入沙箱APPID&quot;;
+
+// 商户私钥，您的PKCS8格式RSA2私钥
+public static String merchant_private_key = &quot;填入你的密钥&quot;;
+
+// 支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
+public static String alipay_public_key = &quot;填入公钥&quot;;
+
+// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
+public static String notify_url = &quot;http://localhost:8080/alipay.trade.page.pay-JAVA-UTF-8/notify_url.jsp&quot;;
+
+// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
+public static String return_url = &quot;http://localhost:8080/alipay.trade.page.pay-JAVA-UTF-8/return_url.jsp&quot;;
+
+// 签名方式
+public static String sign_type = &quot;RSA2&quot;;
+
+// 字符编码格式
+public static String charset = &quot;utf-8&quot;;
+
+// 支付宝网关
+public static String gatewayUrl = &quot;https://openapi.alipaydev.com/gateway.do&quot;;
+
+// 支付宝网关
+public static String log_path = &quot;C:\\&quot;;</code></pre><p><strong>servlet代码:</strong></p>
+<p>这里写了一个简单的doGet方法，当请求这个servlet的时候就会执行支付，然后使用沙箱版的支付宝直接扫码或者网页登录沙箱应用账号就可以支付了</p>
+<p>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {<br>        //获得初始化的AlipayClient<br>        AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, “json”, AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);<br>      //设置请求参数<br>        AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();<br>        alipayRequest.setReturnUrl(AlipayConfig.return_url);<br>        alipayRequest.setNotifyUrl(AlipayConfig.notify_url);</p>
+<pre><code>    //商户订单号，商户网站订单系统中唯一订单号，必填
+    String out_trade_no = &quot;20181037&quot;;
+    //付款金额，必填
+    String total_amount = &quot;9999&quot;;
+    //订单名称，必填
+    String subject = &quot;支付宝测试&quot;;
+    //商品描述，可空
+    String body = &quot;商品描述&quot;;
+
+    alipayRequest.setBizContent(&quot;{\&quot;out_trade_no\&quot;:\&quot;&quot;+ out_trade_no +&quot;\&quot;,&quot; 
+            + &quot;\&quot;total_amount\&quot;:\&quot;&quot;+ total_amount +&quot;\&quot;,&quot; 
+            + &quot;\&quot;subject\&quot;:\&quot;&quot;+ subject +&quot;\&quot;,&quot; 
+            + &quot;\&quot;body\&quot;:\&quot;&quot;+ body +&quot;\&quot;,&quot; 
+            + &quot;\&quot;product_code\&quot;:\&quot;FAST_INSTANT_TRADE_PAY\&quot;}&quot;);
+
+    //请求
+    String result;
+    try {
+        result = alipayClient.pageExecute(alipayRequest).getBody();
+        response.setContentType(&quot;text/html;charset=&quot; + AlipayConfig.charset);
+        response.getWriter().write(result);//直接将完整的表单html输出到页面
+        response.getWriter().flush();
+        response.getWriter().close();
+    } catch (AlipayApiException e) {
+        e.printStackTrace();
+        response.getWriter().write(&quot;捕获异常出错&quot;);
+        response.getWriter().flush();
+        response.getWriter().close();
+    }
+
+
+}</code></pre><p>效果：</p>
+<p><img src="/2020/06/04/web%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%94%AF%E4%BB%98%E5%AE%9D%E6%8E%A5%E5%8F%A3/5bceedec3b1e1.png" alt></p>
+<p>这时候直接使用沙箱版扫码支付就可以了<br>从此不用担心的问题，随心所欲，不用家里有矿也有花不完的钱！！！</p>
 
             </div>
             <hr/>
@@ -506,7 +594,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/06/01/hello-world/">http://yoursite.com/2020/06/01/hello-world/</a>
+                    <a href="http://yoursite.com/2020/06/04/web%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%94%AF%E4%BB%98%E5%AE%9D%E6%8E%A5%E5%8F%A3/">http://yoursite.com/2020/06/04/web%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%94%AF%E4%BB%98%E5%AE%9D%E6%8E%A5%E5%8F%A3/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -976,28 +1064,29 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/06/03/MybatisPlus%E4%B8%AD%E8%B0%83%E7%94%A8Oracle%E5%AD%98%E5%82%A8/">
+                <a href="/2020/06/04/%E8%A7%A3%E5%86%B3CentOS%E5%90%AF%E5%8A%A8docker%E5%A4%B1%E8%B4%A5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MybatisPlus中调用Oracle存储过程">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="解决CentOS启动docker失败">
                         
-                        <span class="card-title">MybatisPlus中调用Oracle存储过程</span>
+                        <span class="card-title">解决CentOS启动docker失败</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            起因
-由于需要将新数据同步到另外的数据库，所以需要使用dblink进行操作，但是dblink不支持写入操作，因此需要调用写好的存储过程才能实现将新数据插入新数据的同时插入旧数据库。准备工作
-预先准备好新旧两个数据库旧的数据库
+                            
+解决CentOS启动docker失败
 
-create
+安装了Docker之后，使用命令启动却失败。
+报错：
+Job for docker.service failed because the control process exited with er
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-03
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
                         </span>
                         <span class="publish-author">
                             
@@ -1017,24 +1106,28 @@ create
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/01/CentOS%E6%8C%82%E8%BD%BDlvm%E5%88%86%E5%8C%BA%E9%87%8D%E5%90%8D%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                <a href="/2020/06/04/%E8%A7%A3%E9%99%A4Dr-com%E7%9A%84WiFi%E9%99%90%E5%88%B6%EF%BC%8C%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="CentOS挂载lvm分区重名问题的解决方法">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="解除Dr.com的WiFi限制，开启热点">
                         
-                        <span class="card-title">CentOS挂载lvm分区重名问题的解决方法</span>
+                        <span class="card-title">解除Dr.com的WiFi限制，开启热点</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            今天一个朋友的服务器硬盘出现问题，换了新硬盘安装好系统后，挂载老硬盘时出现了问题， 在linux下使用新硬盘安装系统，安装好以后再挂载原来的硬盘，分区格式全为系统默认分区，系统默认使用的是lvm格式，并且默认的卷都是 VolGroup00，
+                            
+前言
+
+现在国内大部分高校都使用了宽带上网认证，有一些比较严格的客户端还会禁止开启WiFi共享。作为8102年的新人类，怎么能没有WiFi这一必需品呢？
+下面就来记录一下，在Dr.com客户端下破解共享限制的功能，实现WiFi共享上网冲浪
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
                             </span>
                         <span class="publish-author">
                             

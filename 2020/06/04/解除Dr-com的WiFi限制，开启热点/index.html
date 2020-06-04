@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="接口文档swagger-bootstrap-ui的使用, yuesezhenmei">
+    <meta name="keywords" content="解除Dr.com的WiFi限制，开启热点, yuesezhenmei">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>接口文档swagger-bootstrap-ui的使用 | yuesezhenmei</title>
+    <title>解除Dr.com的WiFi限制，开启热点 | yuesezhenmei</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">接口文档swagger-bootstrap-ui的使用</h1>
+                    <h1 class="description center-align post-title">解除Dr.com的WiFi限制，开启热点</h1>
                 </div>
             </div>
         </div>
@@ -463,56 +463,41 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>相信使用前后端分离的工程师都对接口文档折磨过。无论是前端调用后端，还是后端调用后端，都期望<br>有一个好的接口文档。而Swagger，我个人理解就是把相关的信息存储在它定义的描述文件里面（yml或<br>json格式），再通过维护这个描述文件可以去更新接口文档，以及生成各端代码，它能够很好地化解前<br>面所说的尴尬。</p>
-<p>这样项目开始时期，只要前端跟后端定义好返回的数据格式，就可以根据接口文档进行统一的规范，这<br>样数据规范起来之后，前端就不需要等到后端开发好接口才能知道具体的数据格式，前端使用mockjs模<br>拟数据进行开发，大大节省了时间，同时也减少了不必要的沟通过程。</p>
-<p>个人感觉原生的swagger-UI不太友好，所以在网上找到了swagger-bootstrap-ui，这是国人开发的ui包<br>，感觉非常不错。</p>
-<blockquote>
-<p>快速开始</p>
+                <blockquote>
+<p>前言</p>
 </blockquote>
+<p>现在国内大部分高校都使用了宽带上网认证，有一些比较严格的客户端还会禁止开启WiFi共享。作为8102年的新人类，怎么能没有WiFi这一必需品呢？</p>
+<p>下面就来记录一下，在Dr.com客户端下破解共享限制的功能，实现WiFi共享上网冲浪。</p>
 <blockquote>
-<p>引入maven包</p>
+<p>解除WiFi限制</p>
 </blockquote>
-<p>由于是springfox-swagger的增强UI包,所以基础功能依然依赖Swagger,springfox-swagger的jar包必须<br>引入</p>
-<dependency>
- <groupId>io.springfox</groupId>
- <artifactId>springfox-swagger2</artifactId>
- <version>2.9.2</version>
-</dependency>
-
+<p>在校园网中使用Dr.com连接的用户，如果检测到存在共享行为，就会迫使账户下线；所以为了能够解除WiFi限制，需要安装一个插件才可以使Dr.com客户端跳过检测WiFi共享的行为。</p>
+<p><a href="https://download.csdn.net/download/stormdony/10707210" target="_blank" rel="noopener">破解WiFi限制，点击下载插件</a></p>
+<p>下载工具包之后，直接运行该软件，然后点击 破解Dr.com 即可，破解WiFi限制；</p>
+<p><img src="/2020/06/04/%E8%A7%A3%E9%99%A4Dr-com%E7%9A%84WiFi%E9%99%90%E5%88%B6%EF%BC%8C%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/5bbc159d17bc9.png" alt></p>
+<p>破解后校园网可以随意使用猎豹WiFi、360随身wifi共享网络，也能使用win10自带的热点功能建立热点。</p>
+<p>如果是使用猎豹WiFi开启热点的话，手机挂VP(屁)N(恩)是翻不过去的。但是如果是Win10自带的工具，就可以科学上网。具体原因尚未找到 :(</p>
 <blockquote>
-<p>然后引入SwaggerBootstrapUi的jar包</p>
+<p>使用命令开启WiFi</p>
 </blockquote>
-<dependency>
-  <groupId>com.github.xiaoymin</groupId>
-  <artifactId>swagger-bootstrap-ui</artifactId>
-  <version>1.9.6</version>
-</dependency>
-
-<p>当前最新的是1.9.6版本</p>
+<ul>
+<li>首先开启wifi需要管理员权限，所以在开始菜单搜索cmd或组合键win+r，右键以管理员身份运行。</li>
+<li>输入netsh wlan set hostednetwork mode=allow 回车，把承载网络模式设置为允许</li>
+<li>输入netsh wlan set hostednetwork ssid=无线网络的名称 key=您想要设置的密码<blockquote>
+<p>名称跟密码直接写就行，不用双引号什么的<br>ssid跟key用空格隔开<br>密码必须8位以上</p>
+</blockquote>
+</li>
+<li>输入netsh wlan start hostednetwork<br>回车开启wifi</li>
+<li>这时候虽然开启了wifi，但是还是这时候还是无互联网连接的，所以需要有网络的网络连接共享给它</li>
+<li>进入<strong>控制面板\所有控制面板项\网络和共享中心</strong>选择已经连接上互联网的网络，设置允许其他用户共享网络；具体步骤参考下图<br><img src="/2020/06/04/%E8%A7%A3%E9%99%A4Dr-com%E7%9A%84WiFi%E9%99%90%E5%88%B6%EF%BC%8C%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/5bbc15d2e9f52.png" alt></li>
+</ul>
 <blockquote>
-<p>编写Swagger2Config配置文件</p>
+<p>其他命令</p>
 </blockquote>
-<p>Swagger2Config配置文件如下：</p>
-<p>@Configuration<br>@EnableSwagger2<br>@EnableSwaggerBootstrapUI<br>public class SwaggerConfiguration {<br>    @Bean<br>    public Docket createRestApi() {<br>        return new Docket(DocumentationType.SWAGGER_2)<br>                .apiInfo(apiInfo())<br>                .select()<br>                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))<br>                .paths(PathSelectors.any())<br>                .build();<br>    }<br><br>   \ private ApiInfo apiInfo() {<br>        \return new ApiInfoBuilder()<br>                .title(“接口文档”)<br>                .description(“接口文档”)<br>                .build();<br>    }<br>}</p>
-<p>这里官网有一个对新手不太友好的小坑，那就是Docket中的apis中设置包的扫描路径，我之前是直接使<br>用官网的配置类，没有改变包的扫描路径，导致文档没有显示接口，而改成RequestHandlerSelectors.withClassAnnotation(RestController.class)之后就可以了，这样算是使用了软编码吧！</p>
-<blockquote>
-<p>访问地址</p>
-</blockquote>
-<p>swagger-bootstrap-ui默认访问地址是：http://${host}:${port}/doc.html</p>
-<blockquote>
-<p>swagger2注解</p>
-</blockquote>
-<p>给Controller类添加swagger2注解就生成相应的接口文档了。</p>
-<p>例如:<br>@Api(value=”/test1”, tags=”测试接口模块”)<br>@RestController<br>public class testContro {<br>    @ApiOperation(“test”)<br>    @GetMapping(“/ha”)<br>    public String test(){<br>        return “test成功”;<br>    }<br>    @ApiOperation(“Area删除”)<br>    @GetMapping(“/a”)<br>    public String ha(){<br>        return “Area删除成功”;<br>    }<br>}</p>
-<p>运行项目之后就可以看到下面的效果：<br><img src="/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/6OdusG7zl5SP4gC.png" alt="效果"></p>
-<blockquote>
-<p>最后</p>
-</blockquote>
-<p>有了接口文档之后，当前后端分离开发的时候，只需要丢一个测试环境的文档地址过去给前端就可以了<br>，直接看着文档进行参数对接，同时这个接口文档的调试功能也是非常不错的，有时候懒得写单元测试<br>，直接写一个查询的方法获取数据，再调用请求接口进行调试也是非常方便的。</p>
-<blockquote>
-<p>附</p>
-</blockquote>
-<p><a href="https://github.com/xiaoymin/Swagger-Bootstrap-UI" target="_blank" rel="noopener">swagger-bootstrap-ui 地址</a><br><a href="http://swagger-bootstrap-ui.xiaominfo.com/doc.html" target="_blank" rel="noopener">在线效果体验</a><br><a href="https://www.xiaominfo.com/2018/08/29/swagger-bootstrap-ui-description/" target="_blank" rel="noopener">swagger-bootstrap-ui详解</a></p>
+<p>#删除共享网络<br><code>netsh wlan set hostednetwork mode=disallow</code></p>
+<h1 id="查看共享网络信息—蹭网信息"><a href="#查看共享网络信息—蹭网信息" class="headerlink" title="查看共享网络信息—蹭网信息"></a>查看共享网络信息—蹭网信息</h1><p><code>netsh wlan show hostednetwork</code></p>
+<p>避免每次都要输入麻烦可以把这些命令做成批处理文件<br>新建文本保存以上代码，然后把文本文件改成<code>.bat</code>后缀，双击运行就可以了。</p>
+<p>一般失败的话尝试以管理员身份运行</p>
 
             </div>
             <hr/>
@@ -538,7 +523,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/">http://yoursite.com/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/</a>
+                    <a href="http://yoursite.com/2020/06/04/%E8%A7%A3%E9%99%A4Dr-com%E7%9A%84WiFi%E9%99%90%E5%88%B6%EF%BC%8C%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/">http://yoursite.com/2020/06/04/%E8%A7%A3%E9%99%A4Dr-com%E7%9A%84WiFi%E9%99%90%E5%88%B6%EF%BC%8C%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1008,23 +993,28 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/06/04/mybatis-plus%E7%9A%84%E4%B8%80%E4%BA%9Btips/">
+                <a href="/2020/06/04/web%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%94%AF%E4%BB%98%E5%AE%9D%E6%8E%A5%E5%8F%A3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="mybatis-plus的一些tips">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="web项目中使用支付宝接口">
                         
-                        <span class="card-title">mybatis-plus的一些tips</span>
+                        <span class="card-title">web项目中使用支付宝接口</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一些在使用springcloud和mybatis-plus中遇到的小问题以及解决方法
+                            
+前言
 
-oracle 列转行 LISTAGG和WM_CONCAT
+一直想弄一个有关于支付的第三方接口调用的web项目，网上看了一大堆资料，最后还是选择了使用支付宝。原因有一下两点：
 
-对于将一列多值合并成一行问题，oracle提供了wmsys.wm_concat和listag
+不用另外注册账户(一直讨厌注册各种账户)
+支付宝有沙箱功能，可以实现虚拟支付，适合拿来练手
+
+下面就进入正题吧
+
                         
                     </div>
                     <div class="publish-info">
@@ -1049,28 +1039,31 @@ oracle 列转行 LISTAGG和WM_CONCAT
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/03/MybatisPlus%E4%B8%AD%E8%B0%83%E7%94%A8Oracle%E5%AD%98%E5%82%A8/">
+                <a href="/2020/06/04/hexo%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%8F%96%E6%B6%88live2d%E7%9C%8B%E6%9D%BF%E5%8A%A8%E7%94%BB/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MybatisPlus中调用Oracle存储过程">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="hexo添加和取消live2d看板动画">
                         
-                        <span class="card-title">MybatisPlus中调用Oracle存储过程</span>
+                        <span class="card-title">hexo添加和取消live2d看板动画</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            起因
-由于需要将新数据同步到另外的数据库，所以需要使用dblink进行操作，但是dblink不支持写入操作，因此需要调用写好的存储过程才能实现将新数据插入新数据的同时插入旧数据库。准备工作
-预先准备好新旧两个数据库旧的数据库
+                            
+添加看板娘
 
-create
+在博客目录下安装依赖
+npm install save hexo-helper-live2d
+安装完就已经有默认看板娘了，不同主题是不是一样自行测试
+在主题下的_config.yml的配置信息
+Hexo的 _config.y
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
                             </span>
                         <span class="publish-author">
                             

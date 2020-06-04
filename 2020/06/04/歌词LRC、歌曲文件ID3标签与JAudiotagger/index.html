@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="接口文档swagger-bootstrap-ui的使用, yuesezhenmei">
+    <meta name="keywords" content="歌词LRC、歌曲文件ID3标签与JAudiotagger, yuesezhenmei">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>接口文档swagger-bootstrap-ui的使用 | yuesezhenmei</title>
+    <title>歌词LRC、歌曲文件ID3标签与JAudiotagger | yuesezhenmei</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">接口文档swagger-bootstrap-ui的使用</h1>
+                    <h1 class="description center-align post-title">歌词LRC、歌曲文件ID3标签与JAudiotagger</h1>
                 </div>
             </div>
         </div>
@@ -463,56 +463,124 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>相信使用前后端分离的工程师都对接口文档折磨过。无论是前端调用后端，还是后端调用后端，都期望<br>有一个好的接口文档。而Swagger，我个人理解就是把相关的信息存储在它定义的描述文件里面（yml或<br>json格式），再通过维护这个描述文件可以去更新接口文档，以及生成各端代码，它能够很好地化解前<br>面所说的尴尬。</p>
-<p>这样项目开始时期，只要前端跟后端定义好返回的数据格式，就可以根据接口文档进行统一的规范，这<br>样数据规范起来之后，前端就不需要等到后端开发好接口才能知道具体的数据格式，前端使用mockjs模<br>拟数据进行开发，大大节省了时间，同时也减少了不必要的沟通过程。</p>
-<p>个人感觉原生的swagger-UI不太友好，所以在网上找到了swagger-bootstrap-ui，这是国人开发的ui包<br>，感觉非常不错。</p>
+                <p>现在的移动互联网时代，大部分人可能都不会刻意地留意关于歌曲的一些属性，直接在手机上下载或者在线听就行了。当然，这篇文章肯定会带你了解歌曲更加深入一点的内容，拓展一下知识面。</p>
+<p>本文从两个方面进行探秘：</p>
 <blockquote>
-<p>快速开始</p>
+<blockquote>
+<blockquote>
+<p>歌词格式<br>歌曲文件</p>
+</blockquote>
+</blockquote>
 </blockquote>
 <blockquote>
-<p>引入maven包</p>
+<p>歌词</p>
 </blockquote>
-<p>由于是springfox-swagger的增强UI包,所以基础功能依然依赖Swagger,springfox-swagger的jar包必须<br>引入</p>
+<p>首先，从歌词方面入手，这部分的知识也是我在爬取各音乐网站的时候发现的。</p>
+<blockquote>
+<blockquote>
+<p>常见的歌词格式有 LRC、TRC（天天动听歌词）、KRC（KuGou ResourCe，酷狗资源文件）和 QRC（QQ音乐歌词)。</p>
+</blockquote>
+</blockquote>
+<p>目前就通过爬虫测试发现大部分音乐网站都是使用LRC格式的歌词。</p>
+<blockquote>
+<p>LRC 格式</p>
+</blockquote>
+<p>LRC 歌词格式是世界上最通用的歌词格式，没有之一。它是最基本的歌词格式，几乎没有支持其他歌词格式而不支持这个歌词格式的播放器。LRC 歌词格式的特性也是——简单。</p>
+<p><img src="/2020/06/04/%E6%AD%8C%E8%AF%8DLRC%E3%80%81%E6%AD%8C%E6%9B%B2%E6%96%87%E4%BB%B6ID3%E6%A0%87%E7%AD%BE%E4%B8%8EJAudiotagger/20200604162634.png" alt></p>
+<p>以上是一个示例LRC文件的开头部分.</p>
+<p>可以看到，首先有一些记录歌曲及歌词信息的东东，我们将其称作“ID 标签”（ID Tags），它可以包含歌曲名（ti）、专集（al）、歌手（ar）、歌词创建者（by）、歌词延迟调整（offset）等信息。<br>一眼就可看出，LRC 格式为每行歌词指定起始时刻，格式为<strong>[分钟:秒.百分秒]。</strong></p>
+<p>通过Postman请求QQ音乐可以发现，现在使用的也是这一种格式的歌词</p>
+<p><img src="/2020/06/04/%E6%AD%8C%E8%AF%8DLRC%E3%80%81%E6%AD%8C%E6%9B%B2%E6%96%87%E4%BB%B6ID3%E6%A0%87%E7%AD%BE%E4%B8%8EJAudiotagger/UcM67udAsTFK4CV.png" alt></p>
+<blockquote>
+<p>TRC格式<br>TRC 格式是由天天动听制定的一种歌词格式，可以看作是对 LRC 格式的扩展——为什么我这样说呢？请看下面我从一 TRC 文件中从头摘取的文本。</p>
+</blockquote>
+<p>[ar:胡彦斌]<br>[ti:当你要离开的时候]<br>[al:]<br>[total:243000]<br>[offset:0]<br>[by:ttpod]<br>[00:16.54]&lt;250&gt;当&lt;300&gt;你&lt;1852&gt;要&lt;249&gt;离&lt;452&gt;开&lt;201&gt;的&lt;451&gt;时&lt;3801&gt;候<br>[00:24.32]&lt;200&gt;我&lt;200&gt;们&lt;1201&gt;走&lt;250&gt;过&lt;250&gt;了&lt;251&gt;无&lt;350&gt;数&lt;350&gt;个&lt;600&gt;路&lt;3851&gt;口</p>
+<p>因此，我们可以下结论，TRC 格式在 LRC 格式基础上，歌词正文中每个字的前面增加了时间标记&lt;毫秒数&gt;，每字连续解析，支持了逐字精准。或者，上文中“字”可理解为词，组合在一起当作一个“字”（以下称作“词看作字”），这在遇到英文时尤其有用。</p>
+<p>当然，天天动听老黄历了，被阿里收购之后，现在也就无从探寻了。不过现在好像虾米音乐还是使用这种格式的歌词</p>
+<p><img src="/2020/06/04/%E6%AD%8C%E8%AF%8DLRC%E3%80%81%E6%AD%8C%E6%9B%B2%E6%96%87%E4%BB%B6ID3%E6%A0%87%E7%AD%BE%E4%B8%8EJAudiotagger/HZJw6ErPdgi3kDm.png" alt></p>
+<blockquote>
+<p>歌曲文件</p>
+</blockquote>
+<p>在电脑上下载一首歌曲，查看文件信息，会发现一个我们平常不留意的普通文件竟然会包含这么多的信息。</p>
+<blockquote>
+<p>ID3标签</p>
+</blockquote>
+<p>通过KMPlayer查看媒体信息可以看到以下信息，当然也包含了歌曲的封面图片<br><img src="/2020/06/04/%E6%AD%8C%E8%AF%8DLRC%E3%80%81%E6%AD%8C%E6%9B%B2%E6%96%87%E4%BB%B6ID3%E6%A0%87%E7%AD%BE%E4%B8%8EJAudiotagger/g64x3R5UXFLbtC2.png" alt></p>
+<p>其实这些信息都是通过在MP3文件末尾额外的数据空间来保存。说到这里就不得不说一下音频文件的ID3标签了</p>
+<blockquote>
+<blockquote>
+<p>ID3，一般是位于一个mp3文件的开头或末尾的若干字节内，附加了关于该mp3的歌手，标题，专辑名称，年代，风格等信息，该信息就被称为ID3信息，ID3信息分为两个版本，v1和v2版。 其中：v1版的ID3在mp3文件的末尾128字节，以TAG三个字符开头，后面跟上歌曲信息。 v2版一般位于mp3的开头，可以存储歌词，该专辑的图片等大容量的信息. ——<a href="https://baike.baidu.com/item/ID3" target="_blank" rel="noopener">百度百科</a></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>读写ID3标签</p>
+</blockquote>
+<p>既然知道了MP3文件中的信息是ID3标签，那我们能否自己通过代码读写ID3标签呢？当然是可以的。<br>主要通过使用 JAudiotagger 对MP3文件进行操作就可以完成。</p>
+<blockquote>
+<p>步骤</p>
+</blockquote>
+<p>一、Maven直接引入Jaudiotagger或者使用jar包</p>
+<!-- https://mvnrepository.com/artifact/org/jaudiotagger -->
 <dependency>
- <groupId>io.springfox</groupId>
- <artifactId>springfox-swagger2</artifactId>
- <version>2.9.2</version>
+    <groupId>org</groupId>
+    <artifactId>jaudiotagger</artifactId>
+    <version>2.0.3</version>
 </dependency>
 
-<blockquote>
-<p>然后引入SwaggerBootstrapUi的jar包</p>
-</blockquote>
-<dependency>
-  <groupId>com.github.xiaoymin</groupId>
-  <artifactId>swagger-bootstrap-ui</artifactId>
-  <version>1.9.6</version>
-</dependency>
-
-<p>当前最新的是1.9.6版本</p>
-<blockquote>
-<p>编写Swagger2Config配置文件</p>
-</blockquote>
-<p>Swagger2Config配置文件如下：</p>
-<p>@Configuration<br>@EnableSwagger2<br>@EnableSwaggerBootstrapUI<br>public class SwaggerConfiguration {<br>    @Bean<br>    public Docket createRestApi() {<br>        return new Docket(DocumentationType.SWAGGER_2)<br>                .apiInfo(apiInfo())<br>                .select()<br>                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))<br>                .paths(PathSelectors.any())<br>                .build();<br>    }<br><br>   \ private ApiInfo apiInfo() {<br>        \return new ApiInfoBuilder()<br>                .title(“接口文档”)<br>                .description(“接口文档”)<br>                .build();<br>    }<br>}</p>
-<p>这里官网有一个对新手不太友好的小坑，那就是Docket中的apis中设置包的扫描路径，我之前是直接使<br>用官网的配置类，没有改变包的扫描路径，导致文档没有显示接口，而改成RequestHandlerSelectors.withClassAnnotation(RestController.class)之后就可以了，这样算是使用了软编码吧！</p>
-<blockquote>
-<p>访问地址</p>
-</blockquote>
-<p>swagger-bootstrap-ui默认访问地址是：http://${host}:${port}/doc.html</p>
-<blockquote>
-<p>swagger2注解</p>
-</blockquote>
-<p>给Controller类添加swagger2注解就生成相应的接口文档了。</p>
-<p>例如:<br>@Api(value=”/test1”, tags=”测试接口模块”)<br>@RestController<br>public class testContro {<br>    @ApiOperation(“test”)<br>    @GetMapping(“/ha”)<br>    public String test(){<br>        return “test成功”;<br>    }<br>    @ApiOperation(“Area删除”)<br>    @GetMapping(“/a”)<br>    public String ha(){<br>        return “Area删除成功”;<br>    }<br>}</p>
-<p>运行项目之后就可以看到下面的效果：<br><img src="/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/6OdusG7zl5SP4gC.png" alt="效果"></p>
-<blockquote>
-<p>最后</p>
-</blockquote>
-<p>有了接口文档之后，当前后端分离开发的时候，只需要丢一个测试环境的文档地址过去给前端就可以了<br>，直接看着文档进行参数对接，同时这个接口文档的调试功能也是非常不错的，有时候懒得写单元测试<br>，直接写一个查询的方法获取数据，再调用请求接口进行调试也是非常方便的。</p>
+<p>二、使用代码操作<br>这里以Java实现了一个简单的例子：</p>
+<pre><code>*设置ID3标签进入MP3文件中
+*copyrightInfoSave是一个实体
+*/
+public static void structAudioTag(CopyrightInfoSave copyrightInfoSave,String filePath,String lyricPath,String coverPath) throws Exception{
+    MP3File f = (MP3File) AudioFileIO.read(new File(filePath));
+    ID3v23Tag tag;
+    AbstractID3v2Tag tagV2=f.getID3v2Tag();
+    if(tagV2 instanceof ID3v23Tag){
+        tag=(ID3v23Tag)tagV2;
+    }else{
+        tag = new ID3v23Tag(tagV2);
+    }
+    tag.setField(FieldKey.ARTIST, copyrightInfoSave.getSingername());
+    tag.setField(FieldKey.ALBUM, copyrightInfoSave.getAlbumsname());
+    tag.setField(FieldKey.TITLE, copyrightInfoSave.getSongname());
+    tag.setField(FieldKey.COMMENT, &quot;&quot;);
+    String lyric = readToString(lyricPath);
+    tag.setField(FieldKey.LYRICS,lyric);
+    // 设置歌曲封面图片
+    tag.deleteArtworkField();
+    Artwork newArtwork=Artwork.createArtworkFromFile(new File(coverPath));
+    tag.setField(newArtwork);
+    tag.addField(newArtwork);
+    f.setID3v2Tag(tag);
+    f.save();
+}
+/**
+*读取歌词文件，并返回string类型
+*/
+public static String readToString(String fileName) {
+    String encoding = &quot;UTF-8&quot;;
+    File file = new File(fileName);
+    Long filelength = file.length();
+    byte[] filecontent = new byte[filelength.intValue()];
+    try {
+        FileInputStream in = new FileInputStream(file);
+        in.read(filecontent);
+        in.close();
+        return new String(filecontent, encoding);
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}</code></pre><p>}</p>
+<p>更多例子查看<a href="http://www.jthink.net/jaudiotagger/examples.jsp" target="_blank" rel="noopener">官方的Example</a></p>
 <blockquote>
 <p>附</p>
 </blockquote>
-<p><a href="https://github.com/xiaoymin/Swagger-Bootstrap-UI" target="_blank" rel="noopener">swagger-bootstrap-ui 地址</a><br><a href="http://swagger-bootstrap-ui.xiaominfo.com/doc.html" target="_blank" rel="noopener">在线效果体验</a><br><a href="https://www.xiaominfo.com/2018/08/29/swagger-bootstrap-ui-description/" target="_blank" rel="noopener">swagger-bootstrap-ui详解</a></p>
+<p>参考资料：</p>
+<ul>
+<li><a href="http://blog.xieyc.com/mp3-music-messy-code-and-id3-tag/?kqfivm=adn5r2&lyvcja=bswmr2&vgzsli=dqi0e3" target="_blank" rel="noopener">MP3歌曲乱码和ID3标签</a></li>
+<li><a href="https://shansing.com/read/392/" target="_blank" rel="noopener">初步分析 LRC、TRC、KRC、QRC、KSC 和 KAJ 歌词格式</a></li>
+</ul>
 
             </div>
             <hr/>
@@ -538,7 +606,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/">http://yoursite.com/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/</a>
+                    <a href="http://yoursite.com/2020/06/04/%E6%AD%8C%E8%AF%8DLRC%E3%80%81%E6%AD%8C%E6%9B%B2%E6%96%87%E4%BB%B6ID3%E6%A0%87%E7%AD%BE%E4%B8%8EJAudiotagger/">http://yoursite.com/2020/06/04/%E6%AD%8C%E8%AF%8DLRC%E3%80%81%E6%AD%8C%E6%9B%B2%E6%96%87%E4%BB%B6ID3%E6%A0%87%E7%AD%BE%E4%B8%8EJAudiotagger/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1008,23 +1076,24 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/06/04/mybatis-plus%E7%9A%84%E4%B8%80%E4%BA%9Btips/">
+                <a href="/2020/06/04/%E7%88%AC%E8%99%AB%E5%88%A9%E5%99%A8-cURL%E8%BD%AC%E6%8D%A2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="mybatis-plus的一些tips">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="爬虫利器-cURL转换">
                         
-                        <span class="card-title">mybatis-plus的一些tips</span>
+                        <span class="card-title">爬虫利器-cURL转换</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一些在使用springcloud和mybatis-plus中遇到的小问题以及解决方法
+                            
+前言
 
-oracle 列转行 LISTAGG和WM_CONCAT
+在爬虫的过程，经常需要为程序添加请求头，参数，cookie等信息，但是这些信息的添加都需要手动的去浏览器中找，然后一点一点的慢慢复制粘贴，这样效率就非常的低了。今天就分享一个网站，解决这些问题，让你脱离这些没有意义的劳动
 
-对于将一列多值合并成一行问题，oracle提供了wmsys.wm_concat和listag
+网站介
                         
                     </div>
                     <div class="publish-info">
@@ -1049,28 +1118,28 @@ oracle 列转行 LISTAGG和WM_CONCAT
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/03/MybatisPlus%E4%B8%AD%E8%B0%83%E7%94%A8Oracle%E5%AD%98%E5%82%A8/">
+                <a href="/2020/06/04/mybatis-plus%E7%9A%84%E4%B8%80%E4%BA%9Btips/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MybatisPlus中调用Oracle存储过程">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="mybatis-plus的一些tips">
                         
-                        <span class="card-title">MybatisPlus中调用Oracle存储过程</span>
+                        <span class="card-title">mybatis-plus的一些tips</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            起因
-由于需要将新数据同步到另外的数据库，所以需要使用dblink进行操作，但是dblink不支持写入操作，因此需要调用写好的存储过程才能实现将新数据插入新数据的同时插入旧数据库。准备工作
-预先准备好新旧两个数据库旧的数据库
+                            一些在使用springcloud和mybatis-plus中遇到的小问题以及解决方法
 
-create
+oracle 列转行 LISTAGG和WM_CONCAT
+
+对于将一列多值合并成一行问题，oracle提供了wmsys.wm_concat和listag
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
                             </span>
                         <span class="publish-author">
                             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="接口文档swagger-bootstrap-ui的使用, yuesezhenmei">
+    <meta name="keywords" content="mybatis-plus的一些tips, yuesezhenmei">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>接口文档swagger-bootstrap-ui的使用 | yuesezhenmei</title>
+    <title>mybatis-plus的一些tips | yuesezhenmei</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,7 +313,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">接口文档swagger-bootstrap-ui的使用</h1>
+                    <h1 class="description center-align post-title">mybatis-plus的一些tips</h1>
                 </div>
             </div>
         </div>
@@ -463,56 +463,51 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>相信使用前后端分离的工程师都对接口文档折磨过。无论是前端调用后端，还是后端调用后端，都期望<br>有一个好的接口文档。而Swagger，我个人理解就是把相关的信息存储在它定义的描述文件里面（yml或<br>json格式），再通过维护这个描述文件可以去更新接口文档，以及生成各端代码，它能够很好地化解前<br>面所说的尴尬。</p>
-<p>这样项目开始时期，只要前端跟后端定义好返回的数据格式，就可以根据接口文档进行统一的规范，这<br>样数据规范起来之后，前端就不需要等到后端开发好接口才能知道具体的数据格式，前端使用mockjs模<br>拟数据进行开发，大大节省了时间，同时也减少了不必要的沟通过程。</p>
-<p>个人感觉原生的swagger-UI不太友好，所以在网上找到了swagger-bootstrap-ui，这是国人开发的ui包<br>，感觉非常不错。</p>
+                <p>一些在使用springcloud和mybatis-plus中遇到的小问题以及解决方法</p>
 <blockquote>
-<p>快速开始</p>
+<p>oracle 列转行 LISTAGG和WM_CONCAT</p>
 </blockquote>
+<p>对于将一列多值合并成一行问题，oracle提供了wmsys.wm_concat和listagg函数处理此问题。但是使用那一个函数具体得看数据库的版本</p>
 <blockquote>
-<p>引入maven包</p>
-</blockquote>
-<p>由于是springfox-swagger的增强UI包,所以基础功能依然依赖Swagger,springfox-swagger的jar包必须<br>引入</p>
-<dependency>
- <groupId>io.springfox</groupId>
- <artifactId>springfox-swagger2</artifactId>
- <version>2.9.2</version>
-</dependency>
-
 <blockquote>
-<p>然后引入SwaggerBootstrapUi的jar包</p>
+<p>WMSYS.WM_CONCAT: 依赖WMSYS用户<br>LISTAGG: 11g2才提供的函数，不支持distinct</p>
 </blockquote>
-<dependency>
-  <groupId>com.github.xiaoymin</groupId>
-  <artifactId>swagger-bootstrap-ui</artifactId>
-  <version>1.9.6</version>
-</dependency>
-
-<p>当前最新的是1.9.6版本</p>
+</blockquote>
+<p><code>select listagg(多行转单行的列,分隔符) within group(order by 按哪一列分组) from tmp t group by 按哪一列分组</code></p>
+<p>用法就像聚合函数一样，通过Group by语句，把每个Group的一个字段，拼接起来，非常方便</p>
+<p>例子：<br><code>select * from SONG_INFO ALBUMS_INFO</code></p>
+<p>查出表的数据如图所示：<br><img src="/2020/06/04/mybatis-plus%E7%9A%84%E4%B8%80%E4%BA%9Btips/nAhLqk6B9bmQNCK.png" alt></p>
+<p>现在我需要让两行中的名字合并成一行，并用“+”连接起来<br><code>select listagg(t.SONG_NAME, &#39;+&#39;) within group (order by t.SONG_RD) as BelongSinger</code><br><code>from (select * from SONG_INFO ALBUMS_INFO) t group by t.SONG_RD</code></p>
+<p>结果：<br><img src="/2020/06/04/mybatis-plus%E7%9A%84%E4%B8%80%E4%BA%9Btips/Ik38DjeMcsbK5Ln.png" alt></p>
 <blockquote>
-<p>编写Swagger2Config配置文件</p>
+<p>mybatis-plus使用枚举类型</p>
 </blockquote>
-<p>Swagger2Config配置文件如下：</p>
-<p>@Configuration<br>@EnableSwagger2<br>@EnableSwaggerBootstrapUI<br>public class SwaggerConfiguration {<br>    @Bean<br>    public Docket createRestApi() {<br>        return new Docket(DocumentationType.SWAGGER_2)<br>                .apiInfo(apiInfo())<br>                .select()<br>                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))<br>                .paths(PathSelectors.any())<br>                .build();<br>    }<br><br>   \ private ApiInfo apiInfo() {<br>        \return new ApiInfoBuilder()<br>                .title(“接口文档”)<br>                .description(“接口文档”)<br>                .build();<br>    }<br>}</p>
-<p>这里官网有一个对新手不太友好的小坑，那就是Docket中的apis中设置包的扫描路径，我之前是直接使<br>用官网的配置类，没有改变包的扫描路径，导致文档没有显示接口，而改成RequestHandlerSelectors.withClassAnnotation(RestController.class)之后就可以了，这样算是使用了软编码吧！</p>
+<p>对于在代码中定义枚举类型，最好实现 IEnum 接口，并在配置文件中配置好扫描枚举类型的位置，否则会报下面的的错误。</p>
+<p><code>java.lang.IllegalArgumentException: No enum constant com.content.enums.BusinessType.8</code><br><code>at java.lang.Enum.valueOf(Enum.java:238) ~[na:1.8.0_144]</code></p>
+<p>配置文件设置为：<br><code>mybatis-plus.configuration.default-enum-type-handler=com.baomidou.mybatisplus.extension.handlers.MybatisEnumTypeHandler</code><br><code>mybatis-plus.type-enums-package=com.content.enums</code></p>
+<p>具体可以参考：<a href="https://mp.baomidou.com/guide/enum.html" target="_blank" rel="noopener">mybatis-plus官网</a></p>
 <blockquote>
-<p>访问地址</p>
+<p>mybatis-plus关键字</p>
 </blockquote>
-<p>swagger-bootstrap-ui默认访问地址是：http://${host}:${port}/doc.html</p>
+<p>对于oracle中定义的实体名称和数据库中的关键字冲突，强烈建议不要使用关键字作为实体名称，因为自己使用注解@TableField，也不一定能够解决。<br>比如：我在使用validate这个关键字的时候，就无法正常的解释过去</p>
+<p><img src="/2020/06/04/mybatis-plus%E7%9A%84%E4%B8%80%E4%BA%9Btips/KC8sJR327cUDSpM.png" alt></p>
 <blockquote>
-<p>swagger2注解</p>
+<p>oracle序列</p>
 </blockquote>
-<p>给Controller类添加swagger2注解就生成相应的接口文档了。</p>
-<p>例如:<br>@Api(value=”/test1”, tags=”测试接口模块”)<br>@RestController<br>public class testContro {<br>    @ApiOperation(“test”)<br>    @GetMapping(“/ha”)<br>    public String test(){<br>        return “test成功”;<br>    }<br>    @ApiOperation(“Area删除”)<br>    @GetMapping(“/a”)<br>    public String ha(){<br>        return “Area删除成功”;<br>    }<br>}</p>
-<p>运行项目之后就可以看到下面的效果：<br><img src="/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/6OdusG7zl5SP4gC.png" alt="效果"></p>
-<blockquote>
-<p>最后</p>
-</blockquote>
-<p>有了接口文档之后，当前后端分离开发的时候，只需要丢一个测试环境的文档地址过去给前端就可以了<br>，直接看着文档进行参数对接，同时这个接口文档的调试功能也是非常不错的，有时候懒得写单元测试<br>，直接写一个查询的方法获取数据，再调用请求接口进行调试也是非常方便的。</p>
+<p>在java中使用update，并且主键是一个自增序列的话，如果另外有一个程序在批量导入数据，可能会导致休闲主键冲突的情况，这就是因为数据在导入的时候序列已经增长了，但是java代码还是使用自己原来每增长之前的序列，导致了冲突。</p>
+<p>解决办法：</p>
+<ul>
+<li>先得到当前的序列</li>
+<li>获取数据库中数据的id最大值</li>
+<li>设置增长序列下一次增长为数据库中id最大值减去当前序列</li>
+<li>运行一次获取下一序列值</li>
+<li>设置序列下一次增长为1</li>
+</ul>
+<p><code>SELECT seq_t_test.CURRVAL FROM DUAL  -- 获取当前序列值</code><br><code>alter sequence seq_t_test increment by n -- n表示最大id值减去当前序列值</code><br><code>SELECT seq_t_test.NEXTVAL FROM DUAL -- 增长一次</code><br><code></code><br><code>alter sequence seq_t_test increment by 1 -- 设置回每次增长1</code><br><code>SELECT seq_t_test.CURRVAL FROM DUAL</code></p>
 <blockquote>
 <p>附</p>
 </blockquote>
-<p><a href="https://github.com/xiaoymin/Swagger-Bootstrap-UI" target="_blank" rel="noopener">swagger-bootstrap-ui 地址</a><br><a href="http://swagger-bootstrap-ui.xiaominfo.com/doc.html" target="_blank" rel="noopener">在线效果体验</a><br><a href="https://www.xiaominfo.com/2018/08/29/swagger-bootstrap-ui-description/" target="_blank" rel="noopener">swagger-bootstrap-ui详解</a></p>
+<p>参考资料：<br><a href="https://mp.baomidou.com/" target="_blank" rel="noopener">mybatis-plus官网</a></p>
 
             </div>
             <hr/>
@@ -538,7 +533,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/">http://yoursite.com/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/</a>
+                    <a href="http://yoursite.com/2020/06/04/mybatis-plus%E7%9A%84%E4%B8%80%E4%BA%9Btips/">http://yoursite.com/2020/06/04/mybatis-plus%E7%9A%84%E4%B8%80%E4%BA%9Btips/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1008,23 +1003,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/06/04/mybatis-plus%E7%9A%84%E4%B8%80%E4%BA%9Btips/">
+                <a href="/2020/06/04/%E6%AD%8C%E8%AF%8DLRC%E3%80%81%E6%AD%8C%E6%9B%B2%E6%96%87%E4%BB%B6ID3%E6%A0%87%E7%AD%BE%E4%B8%8EJAudiotagger/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="mybatis-plus的一些tips">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="歌词LRC、歌曲文件ID3标签与JAudiotagger">
                         
-                        <span class="card-title">mybatis-plus的一些tips</span>
+                        <span class="card-title">歌词LRC、歌曲文件ID3标签与JAudiotagger</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一些在使用springcloud和mybatis-plus中遇到的小问题以及解决方法
+                            现在的移动互联网时代，大部分人可能都不会刻意地留意关于歌曲的一些属性，直接在手机上下载或者在线听就行了。当然，这篇文章肯定会带你了解歌曲更加深入一点的内容，拓展一下知识面。
+本文从两个方面进行探秘：
 
-oracle 列转行 LISTAGG和WM_CONCAT
 
-对于将一列多值合并成一行问题，oracle提供了wmsys.wm_concat和listag
+
+歌词格式歌曲文件
+
+
+
+
+歌词
+
+
                         
                     </div>
                     <div class="publish-info">
@@ -1049,28 +1052,24 @@ oracle 列转行 LISTAGG和WM_CONCAT
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/03/MybatisPlus%E4%B8%AD%E8%B0%83%E7%94%A8Oracle%E5%AD%98%E5%82%A8/">
+                <a href="/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MybatisPlus中调用Oracle存储过程">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="接口文档swagger-bootstrap-ui的使用">
                         
-                        <span class="card-title">MybatisPlus中调用Oracle存储过程</span>
+                        <span class="card-title">接口文档swagger-bootstrap-ui的使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            起因
-由于需要将新数据同步到另外的数据库，所以需要使用dblink进行操作，但是dblink不支持写入操作，因此需要调用写好的存储过程才能实现将新数据插入新数据的同时插入旧数据库。准备工作
-预先准备好新旧两个数据库旧的数据库
-
-create
+                            相信使用前后端分离的工程师都对接口文档折磨过。无论是前端调用后端，还是后端调用后端，都期望有一个好的接口文档。而Swagger，我个人理解就是把相关的信息存储在它定义的描述文件里面（yml或json格式），再通过维护这个描述文件可以去更新接
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
                             </span>
                         <span class="publish-author">
                             

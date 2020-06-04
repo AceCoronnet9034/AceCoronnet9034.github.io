@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="接口文档swagger-bootstrap-ui的使用, yuesezhenmei">
+    <meta name="keywords" content="爬取猫眼评论，分析《阿丽塔：战斗天使》, yuesezhenmei">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>接口文档swagger-bootstrap-ui的使用 | yuesezhenmei</title>
+    <title>爬取猫眼评论，分析《阿丽塔：战斗天使》 | yuesezhenmei</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">接口文档swagger-bootstrap-ui的使用</h1>
+                    <h1 class="description center-align post-title">爬取猫眼评论，分析《阿丽塔：战斗天使》</h1>
                 </div>
             </div>
         </div>
@@ -463,56 +463,59 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>相信使用前后端分离的工程师都对接口文档折磨过。无论是前端调用后端，还是后端调用后端，都期望<br>有一个好的接口文档。而Swagger，我个人理解就是把相关的信息存储在它定义的描述文件里面（yml或<br>json格式），再通过维护这个描述文件可以去更新接口文档，以及生成各端代码，它能够很好地化解前<br>面所说的尴尬。</p>
-<p>这样项目开始时期，只要前端跟后端定义好返回的数据格式，就可以根据接口文档进行统一的规范，这<br>样数据规范起来之后，前端就不需要等到后端开发好接口才能知道具体的数据格式，前端使用mockjs模<br>拟数据进行开发，大大节省了时间，同时也减少了不必要的沟通过程。</p>
-<p>个人感觉原生的swagger-UI不太友好，所以在网上找到了swagger-bootstrap-ui，这是国人开发的ui包<br>，感觉非常不错。</p>
+                <p>日本漫画《铳梦》改编电影《阿丽塔：战斗天使（Alita: Battle Angel）》于2019年2月22日在中国大陆上映了。近几天，网上对于这部电影的分析评论也很多，今天通过猫眼电影上的评论粗浅地看一下大众对这部科幻电影的评价。</p>
+<p><img src="/2020/06/04/%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E8%AF%84%E8%AE%BA%EF%BC%8C%E5%88%86%E6%9E%90%E3%80%8A%E9%98%BF%E4%B8%BD%E5%A1%94%EF%BC%9A%E6%88%98%E6%96%97%E5%A4%A9%E4%BD%BF%E3%80%8B/5c737831a3806.jpg" alt></p>
 <blockquote>
-<p>快速开始</p>
+<p>工具库</p>
 </blockquote>
+<ul>
+<li>jieba</li>
+<li>pyecharts</li>
+<li>wordcloud</li>
+<li>matplotlib</li>
+</ul>
 <blockquote>
-<p>引入maven包</p>
+<p>分析网站</p>
 </blockquote>
-<p>由于是springfox-swagger的增强UI包,所以基础功能依然依赖Swagger,springfox-swagger的jar包必须<br>引入</p>
-<dependency>
- <groupId>io.springfox</groupId>
- <artifactId>springfox-swagger2</artifactId>
- <version>2.9.2</version>
-</dependency>
-
+<p>通过在浏览器模拟移动端请求评论的数据，可以看到随着页面的更改url并没有发生变化，初步判断该网页是通过js加载的，通过多次的实践，找到了请求返回的真实url和关键参数，这里返回的是json格式的数据，里面有我们需要的信息。</p>
+<p><img src="/2020/06/04/%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E8%AF%84%E8%AE%BA%EF%BC%8C%E5%88%86%E6%9E%90%E3%80%8A%E9%98%BF%E4%B8%BD%E5%A1%94%EF%BC%9A%E6%88%98%E6%96%97%E5%A4%A9%E4%BD%BF%E3%80%8B/5c7377c7543eb.png" alt></p>
+<p>通过比较多次请求信息，发现以下的参数</p>
+<p><img src="/2020/06/04/%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E8%AF%84%E8%AE%BA%EF%BC%8C%E5%88%86%E6%9E%90%E3%80%8A%E9%98%BF%E4%B8%BD%E5%A1%94%EF%BC%9A%E6%88%98%E6%96%97%E5%A4%A9%E4%BD%BF%E3%80%8B/5c7377e2dfede.png" alt></p>
+<p>其中，offset是每次请求的起始评论条数；limit是每次请求的条数；ts我猜测应该是时间戳，不用管它</p>
 <blockquote>
-<p>然后引入SwaggerBootstrapUi的jar包</p>
+<p>抓取信息</p>
 </blockquote>
-<dependency>
-  <groupId>com.github.xiaoymin</groupId>
-  <artifactId>swagger-bootstrap-ui</artifactId>
-  <version>1.9.6</version>
-</dependency>
-
-<p>当前最新的是1.9.6版本</p>
+<p>通过返回的json数据，选取其中的content,score,nick ,gender这四个参数，将这些信息写入一个文本中保存起来。</p>
+<p><img src="/2020/06/04/%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E8%AF%84%E8%AE%BA%EF%BC%8C%E5%88%86%E6%9E%90%E3%80%8A%E9%98%BF%E4%B8%BD%E5%A1%94%EF%BC%9A%E6%88%98%E6%96%97%E5%A4%A9%E4%BD%BF%E3%80%8B/5c7377f052fb9.png" alt></p>
+<p>def get_comments(self):<br>    ‘’’<br>    爬取评论信息<br>    :return:<br>    ‘’’<br>    for i in range(0, 14352, 15):<br>        URL = self.url.format(i)<br>        data = requests.get(url=URL, headers=self.header)<br>        time.sleep(random.random() * 3)<br>        com = json.loads(data.text)<br>        comments = com[‘data’][‘comments’]<br>        if comments:<br>            for item in comments:<br>                data = {<br>                    ‘content’: item[‘content’],<br>                    ‘score’: item[‘score’],<br>                    ‘nick’: item[‘nick’],<br>                    ‘gender’: item[‘gender’],<br>                }<br>                print(data)<br>                # 存入文本中<br>                with open(‘comments.txt’, ‘a+’, encoding=’UTF-8’) as file:<br>                    file.writelines(<br>                        json.dumps(data, ensure_ascii=False) + ‘\n’)<br>        else:<br>            break</p>
 <blockquote>
-<p>编写Swagger2Config配置文件</p>
+<p>数据分析</p>
 </blockquote>
-<p>Swagger2Config配置文件如下：</p>
-<p>@Configuration<br>@EnableSwagger2<br>@EnableSwaggerBootstrapUI<br>public class SwaggerConfiguration {<br>    @Bean<br>    public Docket createRestApi() {<br>        return new Docket(DocumentationType.SWAGGER_2)<br>                .apiInfo(apiInfo())<br>                .select()<br>                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))<br>                .paths(PathSelectors.any())<br>                .build();<br>    }<br><br>   \ private ApiInfo apiInfo() {<br>        \return new ApiInfoBuilder()<br>                .title(“接口文档”)<br>                .description(“接口文档”)<br>                .build();<br>    }<br>}</p>
-<p>这里官网有一个对新手不太友好的小坑，那就是Docket中的apis中设置包的扫描路径，我之前是直接使<br>用官网的配置类，没有改变包的扫描路径，导致文档没有显示接口，而改成RequestHandlerSelectors.withClassAnnotation(RestController.class)之后就可以了，这样算是使用了软编码吧！</p>
+<p>由于爬取的数据都是比较规整，并且没有选择太多的特征，所以就跳过清洗阶段，直接进行分析。为了便于观察，这里使用pyecharts进行可视化处理。</p>
 <blockquote>
-<p>访问地址</p>
+<ol>
+<li>评论词云</li>
+</ol>
 </blockquote>
-<p>swagger-bootstrap-ui默认访问地址是：http://${host}:${port}/doc.html</p>
+<p>通过词云，能够一目了然地知道这些精选评论都说了些什么。由于使用pyecharts制作词云需要比较繁琐的处理，所以直接使用jieba分词并用WordCloud进行制作词云。</p>
+<p>def get_wordcloud(self):<br>        ‘’’<br>        制作词云图<br>        :return:<br>        ‘’’<br>        text = self.get_context()<br>        seg_list = jieba.cut(text, cut_all=True)<br>        wc = WordCloud(background_color=”#CCC”,  # 设置背景颜色<br>                       # mask = pic , #设置背景图片<br>                       max_words=2000,  # 设置最大显示的字数<br>                       margin=5,<br>                       font_path=”C:\Windows\Fonts\STFANGSO.ttf”,  # 不加这一句显示口字形乱码<br>                       max_font_size=80,  # 设置字体最大值<br>                       random_state=40,  # 设置有多少种随机生成状态，即有多少种配色方案<br>                       )<br>        w1 = “/ “.join(seg_list)  # 全模式<br>        mword = wc.generate(w1)<br>        plt.imshow(mword)<br>        plt.axis(“off”)<br>        plt.savefig(‘wordcloud.png’)  # 保存图片<br>        plt.show()</p>
+<p><img src="/2020/06/04/%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E8%AF%84%E8%AE%BA%EF%BC%8C%E5%88%86%E6%9E%90%E3%80%8A%E9%98%BF%E4%B8%BD%E5%A1%94%EF%BC%9A%E6%88%98%E6%96%97%E5%A4%A9%E4%BD%BF%E3%80%8B/5c73780363c33.png" alt></p>
+<p>可以看到，“好看”，“特效”，“第二部”，“剧情”，这几个词都是出现比较多次的，再通过去原来保存评论信息的文本中查询，这些词的整个评论，我发现很多人都是在说电影没有结局，或者期待出第二部的。</p>
 <blockquote>
-<p>swagger2注解</p>
+<p>2.性别比例</p>
 </blockquote>
-<p>给Controller类添加swagger2注解就生成相应的接口文档了。</p>
-<p>例如:<br>@Api(value=”/test1”, tags=”测试接口模块”)<br>@RestController<br>public class testContro {<br>    @ApiOperation(“test”)<br>    @GetMapping(“/ha”)<br>    public String test(){<br>        return “test成功”;<br>    }<br>    @ApiOperation(“Area删除”)<br>    @GetMapping(“/a”)<br>    public String ha(){<br>        return “Area删除成功”;<br>    }<br>}</p>
-<p>运行项目之后就可以看到下面的效果：<br><img src="/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/6OdusG7zl5SP4gC.png" alt="效果"></p>
+<p>由于爬取到的性别都是使用数字0，1,2进行标识的，所以按照程序员的思维。我就用 0代表男，1代表女，2代表未知来进行处理了。</p>
+<p><img src="/2020/06/04/%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E8%AF%84%E8%AE%BA%EF%BC%8C%E5%88%86%E6%9E%90%E3%80%8A%E9%98%BF%E4%B8%BD%E5%A1%94%EF%BC%9A%E6%88%98%E6%96%97%E5%A4%A9%E4%BD%BF%E3%80%8B/5c73780d34505.png" alt></p>
+<blockquote>
+<p>3.评分情况</p>
+</blockquote>
+<p>从猫眼的总评分9.0来看，这部电影还是比较不错的，截止2月24日已经在中国拿下了39510万元的票房。</p>
+<p><img src="/2020/06/04/%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E8%AF%84%E8%AE%BA%EF%BC%8C%E5%88%86%E6%9E%90%E3%80%8A%E9%98%BF%E4%B8%BD%E5%A1%94%EF%BC%9A%E6%88%98%E6%96%97%E5%A4%A9%E4%BD%BF%E3%80%8B/5c737816de932.png" alt></p>
+<p>通过上图，可以清楚地看到，大部分的评分都是8-10分的，所以总评的9.0也是有依据的。</p>
 <blockquote>
 <p>最后</p>
 </blockquote>
-<p>有了接口文档之后，当前后端分离开发的时候，只需要丢一个测试环境的文档地址过去给前端就可以了<br>，直接看着文档进行参数对接，同时这个接口文档的调试功能也是非常不错的，有时候懒得写单元测试<br>，直接写一个查询的方法获取数据，再调用请求接口进行调试也是非常方便的。</p>
-<blockquote>
-<p>附</p>
-</blockquote>
-<p><a href="https://github.com/xiaoymin/Swagger-Bootstrap-UI" target="_blank" rel="noopener">swagger-bootstrap-ui 地址</a><br><a href="http://swagger-bootstrap-ui.xiaominfo.com/doc.html" target="_blank" rel="noopener">在线效果体验</a><br><a href="https://www.xiaominfo.com/2018/08/29/swagger-bootstrap-ui-description/" target="_blank" rel="noopener">swagger-bootstrap-ui详解</a></p>
+<p>虽然这部电影一些的情节都没有介绍清楚，但是很多的战斗细节都用特效展现的淋漓尽致。据说全片特效渲染动用了30000台电脑，总耗时4.32亿小时，这也是国内的“五毛钱”特效所不能比拟的。</p>
 
             </div>
             <hr/>
@@ -538,7 +541,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/">http://yoursite.com/2020/06/04/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3swagger-bootstrap-ui%E7%9A%84%E4%BD%BF%E7%94%A8/</a>
+                    <a href="http://yoursite.com/2020/06/04/%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E8%AF%84%E8%AE%BA%EF%BC%8C%E5%88%86%E6%9E%90%E3%80%8A%E9%98%BF%E4%B8%BD%E5%A1%94%EF%BC%9A%E6%88%98%E6%96%97%E5%A4%A9%E4%BD%BF%E3%80%8B/">http://yoursite.com/2020/06/04/%E7%88%AC%E5%8F%96%E7%8C%AB%E7%9C%BC%E8%AF%84%E8%AE%BA%EF%BC%8C%E5%88%86%E6%9E%90%E3%80%8A%E9%98%BF%E4%B8%BD%E5%A1%94%EF%BC%9A%E6%88%98%E6%96%97%E5%A4%A9%E4%BD%BF%E3%80%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1008,23 +1011,26 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/06/04/mybatis-plus%E7%9A%84%E4%B8%80%E4%BA%9Btips/">
+                <a href="/2020/06/04/%E7%AA%81%E7%A0%B4%E6%B7%98%E5%AE%9D%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81%E5%8F%8D%E7%88%AC/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="mybatis-plus的一些tips">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="突破淘宝登录验证反爬">
                         
-                        <span class="card-title">mybatis-plus的一些tips</span>
+                        <span class="card-title">突破淘宝登录验证反爬</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一些在使用springcloud和mybatis-plus中遇到的小问题以及解决方法
+                            淘宝登录的主要三种方式
 
-oracle 列转行 LISTAGG和WM_CONCAT
+账号密码登录(有滑块)
+微博第三方账号登录(无滑块)
+扫码登录
 
-对于将一列多值合并成一行问题，oracle提供了wmsys.wm_concat和listag
+上面都是使用 Selenium 进行模拟登录的，这样就可以不用手动添加各种Cookie或者Session，少了很多工作。
+注：仅供技术交流使用，请不
                         
                     </div>
                     <div class="publish-info">
@@ -1049,28 +1055,29 @@ oracle 列转行 LISTAGG和WM_CONCAT
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/03/MybatisPlus%E4%B8%AD%E8%B0%83%E7%94%A8Oracle%E5%AD%98%E5%82%A8/">
+                <a href="/2020/06/04/%E8%A7%A3%E5%86%B3CentOS%E5%90%AF%E5%8A%A8docker%E5%A4%B1%E8%B4%A5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MybatisPlus中调用Oracle存储过程">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="解决CentOS启动docker失败">
                         
-                        <span class="card-title">MybatisPlus中调用Oracle存储过程</span>
+                        <span class="card-title">解决CentOS启动docker失败</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            起因
-由于需要将新数据同步到另外的数据库，所以需要使用dblink进行操作，但是dblink不支持写入操作，因此需要调用写好的存储过程才能实现将新数据插入新数据的同时插入旧数据库。准备工作
-预先准备好新旧两个数据库旧的数据库
+                            
+解决CentOS启动docker失败
 
-create
+安装了Docker之后，使用命令启动却失败。
+报错：
+Job for docker.service failed because the control process exited with er
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
                             </span>
                         <span class="publish-author">
                             
