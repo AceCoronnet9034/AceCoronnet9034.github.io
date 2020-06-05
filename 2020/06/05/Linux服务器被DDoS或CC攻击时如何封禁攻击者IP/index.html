@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="微信自动回复机器人, yuesezhenmei">
+    <meta name="keywords" content="Linux服务器被DDoS或CC攻击时如何封禁攻击者IP, yuesezhenmei">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>微信自动回复机器人 | yuesezhenmei</title>
+    <title>Linux服务器被DDoS或CC攻击时如何封禁攻击者IP | yuesezhenmei</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">微信自动回复机器人</h1>
+                    <h1 class="description center-align post-title">Linux服务器被DDoS或CC攻击时如何封禁攻击者IP</h1>
                 </div>
             </div>
         </div>
@@ -442,14 +442,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-06-04
+                    2020-06-05
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-06-04
+                    2020-06-05
                 </div>
                 
 
@@ -463,40 +463,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>通过itchat获取微信的相关消息，将微信消息传输到青云客机器人接口，获取机器人的返回消息。将返回消息返回给微信消息的发送人。以此实现将微信个人号变身为聊天机器人。</p>
-<p>因为图灵机器人现在需要实名认证，并每天免费数量只有100条，感觉非常麻烦，所以找了一个免费的接口-<a href="http://api.qingyunke.com/" target="_blank" rel="noopener">青云客</a>，虽然这个智能程度没有图灵机器人那么高，但是也足够应付基本的消息了，不过有时候有点智障，谨慎使用哈。</p>
-<p>以下是接口说明：</p>
-<p><img src="/2020/06/04/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/5d1df6fdad7a558919.png" alt></p>
-<blockquote>
-<p>安装库</p>
-</blockquote>
-<p>需要安装以下python库才能够跑起来</p>
-<ul>
-<li>itchat</li>
-<li>requests</li>
-</ul>
-<blockquote>
-<p>具体代码</p>
-</blockquote>
-<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><h1 id="Time-2019-7-3-14-23"><a href="#Time-2019-7-3-14-23" class="headerlink" title="@Time    : 2019/7/3 14:23"></a>@Time    : 2019/7/3 14:23</h1><h1 id="Author-donlex"><a href="#Author-donlex" class="headerlink" title="@Author  : donlex"></a>@Author  : donlex</h1><h1 id="Email-donlex-qq-com"><a href="#Email-donlex-qq-com" class="headerlink" title="@Email   : donlex@qq.com"></a>@Email   : <a href="mailto:donlex@qq.com">donlex@qq.com</a></h1><h1 id="Software-PyCharm-2018-1-4-Professional-Edition"><a href="#Software-PyCharm-2018-1-4-Professional-Edition" class="headerlink" title="@Software: PyCharm 2018.1.4 (Professional Edition)"></a>@Software: PyCharm 2018.1.4 (Professional Edition)</h1><p>import itchat<br>import requests</p>
-<p>def get_response(msg):<br>    apiUrl = ‘<a href="http://api.qingyunke.com/api.php?key=free&amp;appid=0&amp;msg={}&#39;.format" target="_blank" rel="noopener">http://api.qingyunke.com/api.php?key=free&amp;appid=0&amp;msg={}&#39;.format</a>(<br>        msg)<br>    # 发送post请求<br>    r = requests.post(apiUrl).json()<br>    # 替换br字符串<br>    response = r.get(‘content’).replace(‘{br}’, ‘\n’)<br>    return response</p>
-<h1 id="用于接收来自朋友间的对话消息"><a href="#用于接收来自朋友间的对话消息" class="headerlink" title="用于接收来自朋友间的对话消息"></a>用于接收来自朋友间的对话消息</h1><h1 id="如果不用这个，朋友发的消息便不会自动回复"><a href="#如果不用这个，朋友发的消息便不会自动回复" class="headerlink" title="如果不用这个，朋友发的消息便不会自动回复"></a>如果不用这个，朋友发的消息便不会自动回复</h1><p>@itchat.msg_register(itchat.content.TEXT)<br>def print_content(msg):<br>    return get_response(msg[‘Text’])</p>
-<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    itchat.auto_login(True) #保存登录信息，下次不用扫码<br>    itchat.run()</p>
-<blockquote>
-<p>详细解释</p>
-</blockquote>
-<p>itchat.auto_login()是将会通过微信扫描二维码登录，但是这种登录的方式确实短时间的登录，并不会保留登录的状态，也就是下次登录时还是需要扫描二维码。</p>
-<p>另外，扫码登录是通过网页版微信登陆，因为新注册的微信账号可能不支持网页版功能，所以最好是在使用之前，先验证下能够登录网页版微信。</p>
-<blockquote>
-<p>其他机器人</p>
-</blockquote>
-<ul>
-<li>图灵机器人：<a href="http://www.turingapi.com/" target="_blank" rel="noopener">http://www.turingapi.com/</a> 需求实名制认证，并每天免费数量只有100条）</li>
-<li>一个AI：<a href="http://www.yige.ai/（免费且无数量限制。可自定义回复、对话、场景。但高级功能使用比较复杂。但已长时间没人维护）" target="_blank" rel="noopener">http://www.yige.ai/（免费且无数量限制。可自定义回复、对话、场景。但高级功能使用比较复杂。但已长时间没人维护）</a></li>
-<li>智能闲聊（腾讯）<a href="https://ai.qq.com/product/nlpchat.shtml" target="_blank" rel="noopener">https://ai.qq.com/product/nlpchat.shtml</a> ( 申请使用，免费且无限量。大厂靠谱。)</li>
-<li>天行机器人 <a href="https://www.tianapi.com/apiview/47" target="_blank" rel="noopener">https://www.tianapi.com/apiview/47</a> (认证后有7万条免费使用。之后收费：1万条/1块钱)</li>
-<li>海知智能 <a href="https://ruyi.ai/" target="_blank" rel="noopener">https://ruyi.ai/</a> （功能很强大，不仅仅用于聊天。需申请 key，免费）</li>
-</ul>
+                <p>Linux服务器就是采用Linux系统的网络服务器，当Linux服务器遭到DDOS攻击或者CC攻击时，如果攻击流量非常大，那只能通过专业的网络安全公司接入高防来防御了，但如果是小流量的攻击时，我们可以通过使用 iptables 来手动封禁这些攻击者的IP，从而达到防护效果。今天就来分享一下Linux服务器下如何获取攻击者IP然后进行封禁。</p>
+<p>通过 netstat 获取攻击者 IP</p>
+<p>如果攻击者攻击的是你的 Web 服务的话，默认是80端口，我们就可以使用下面的代码，如果攻击的不是80端口的话，将下面的两个数字80改为你被攻击的端口即可。如果你需要显示多条记录，请自己手动将head -n20调大即可。</p>
+<p>netstat -anlp|grep 80|grep tcp|awk ‘{print $5}’|awk -F: ‘{print $1}’|sort|uniq -c|sort -nr|head -n20 | netstat -ant |awk ‘/:80/{split($5,ip,”:”);++A[ip[1]]}END{for(i in A) print A,i}’ |sort -rn|head -n20</p>
+<p>通过 tcpdump 获取攻击者 IP</p>
+<p>在使用之前，请确保您的系统已经安装了tcpdump，Debian/Ubuntu系列快速安装如下：</p>
+<p>apt-get install -y tcpdump</p>
+<p>安装后，使用下面的代码即可。需要注意的是，-i eth0指的是你主网卡，如果你是 OpenVZ 的虚拟机的话，就改成您的网卡名venet0。同样你需要设置的是，port 80设置你被攻击的端口，-c 1000指 tcpdump 需要统计的记录数，他会在达到这个数之后显示结果。head -20设置你要显示的记录条数。</p>
+<p>tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F”.” ‘{print $1″.”$2″.”$3″.”$4}’ | sort | uniq -c | sort -nr |head -20</p>
+<p>如何封禁 IP ？</p>
+<p>通过上面的步骤，我们已经知道是谁在攻击我们了，现在我们就可以将他们拉入iptables禁止他们连接到服务器了。</p>
+<p>封禁单个 IP<br>iptables -I INPUT -s 211.1.2.1 -j DROP</p>
+<p>封禁一个 IP 段<br>iptables -I INPUT -s 211.1.2.0/16 -j DROP</p>
 
             </div>
             <hr/>
@@ -522,7 +501,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/06/04/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/">http://yoursite.com/2020/06/04/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/</a>
+                    <a href="http://yoursite.com/2020/06/05/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABDDoS%E6%88%96CC%E6%94%BB%E5%87%BB%E6%97%B6%E5%A6%82%E4%BD%95%E5%B0%81%E7%A6%81%E6%94%BB%E5%87%BB%E8%80%85IP/">http://yoursite.com/2020/06/05/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABDDoS%E6%88%96CC%E6%94%BB%E5%87%BB%E6%97%B6%E5%A6%82%E4%BD%95%E5%B0%81%E7%A6%81%E6%94%BB%E5%87%BB%E8%80%85IP/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -988,9 +967,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2020/06/05/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABDDoS%E6%88%96CC%E6%94%BB%E5%87%BB%E6%97%B6%E5%A6%82%E4%BD%95%E5%B0%81%E7%A6%81%E6%94%BB%E5%87%BB%E8%80%85IP/">
                     <div class="card-image">
@@ -1008,9 +988,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1019,6 +999,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1029,26 +1010,20 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/04/%E7%AA%81%E7%A0%B4%E6%B7%98%E5%AE%9D%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81%E5%8F%8D%E7%88%AC/">
+                <a href="/2020/06/04/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="突破淘宝登录验证反爬">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="微信自动回复机器人">
                         
-                        <span class="card-title">突破淘宝登录验证反爬</span>
+                        <span class="card-title">微信自动回复机器人</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            淘宝登录的主要三种方式
-
-账号密码登录(有滑块)
-微博第三方账号登录(无滑块)
-扫码登录
-
-上面都是使用 Selenium 进行模拟登录的，这样就可以不用手动添加各种Cookie或者Session，少了很多工作。
-注：仅供技术交流使用，请不
+                            通过itchat获取微信的相关消息，将微信消息传输到青云客机器人接口，获取机器人的返回消息。将返回消息返回给微信消息的发送人。以此实现将微信个人号变身为聊天机器人。
+因为图灵机器人现在需要实名认证，并每天免费数量只有100条，感觉非常麻烦，
                         
                     </div>
                     <div class="publish-info">
