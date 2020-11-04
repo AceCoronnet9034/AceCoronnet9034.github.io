@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Centos8开启BBR</title>
+      <link href="2020/11/04/centos8-kai-qi-bbr/"/>
+      <url>2020/11/04/centos8-kai-qi-bbr/</url>
+      
+        <content type="html"><![CDATA[<p>Cenos8现在网上的锐速脚本还很少，因此安装锐速换内核很麻烦<br>但是BBR系统内核已经支持了，不需要安装</p><p>因此安装BBR的步骤就非常简单</p><p>打开这个文件 /etc/sysctl.conf，加入下边两句话</p><blockquote><p>net.core.default_qdisc = fq<br>net.ipv4.tcp_congestion_control = bbr</p></blockquote><p>保存退出，执行下面的命令使配置生效</p><blockquote><p>sysctl -p</p></blockquote><p>至此BBR就成功开启了<br>可以通过以下三条命令检查是否开启成功</p><blockquote><p>[root@centos8-1 ~]# sysctl net.ipv4.tcp_available_congestion_control<br>net.ipv4.tcp_available_congestion_control = reno cubic bbr</p></blockquote><blockquote><p>[root@centos8-1 ~]# sysctl net.ipv4.tcp_congestion_control<br>net.ipv4.tcp_congestion_control = bbr</p></blockquote><blockquote><p>[root@centos8-1 ~]# lsmod | grep bbr<br>tcp_bbr                20480  1</p></blockquote><p>三条命令输出都有bbr就是成功了，实际工作上一般都只执行最后一条检测</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>自用程序</title>
       <link href="2020/10/31/zi-yong-cheng-xu/"/>
       <url>2020/10/31/zi-yong-cheng-xu/</url>

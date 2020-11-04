@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-31T05:39:47.138Z</updated>
+  <updated>2020-11-04T03:19:52.691Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Centos8开启BBR</title>
+    <link href="http://yoursite.com/2020/11/04/centos8-kai-qi-bbr/"/>
+    <id>http://yoursite.com/2020/11/04/centos8-kai-qi-bbr/</id>
+    <published>2020-11-04T03:14:08.000Z</published>
+    <updated>2020-11-04T03:19:52.691Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Cenos8现在网上的锐速脚本还很少，因此安装锐速换内核很麻烦&lt;br&gt;但是BBR系统内核已经支持了，不需要安装&lt;/p&gt;
+&lt;p&gt;因此安装BBR的步骤就非常简单&lt;/p&gt;
+&lt;p&gt;打开这个文件</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>自用程序</title>
