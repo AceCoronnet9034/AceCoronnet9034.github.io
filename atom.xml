@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-11-04T03:19:52.691Z</updated>
+  <updated>2020-12-08T16:11:00.644Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>任务栏全透明及隐藏系统托盘图标</title>
+    <link href="http://yoursite.com/2020/12/08/ren-wu-lan-quan-tou-ming-ji-yin-cang-xi-tong-tuo-pan-tu-biao/"/>
+    <id>http://yoursite.com/2020/12/08/ren-wu-lan-quan-tou-ming-ji-yin-cang-xi-tong-tuo-pan-tu-biao/</id>
+    <published>2020-12-08T15:41:30.000Z</published>
+    <updated>2020-12-08T16:11:00.644Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;任务栏全透明&quot;&gt;&lt;a href=&quot;#任务栏全透明&quot; class=&quot;headerlink&quot; title=&quot;任务栏全透明&quot;&gt;&lt;/a&gt;任务栏全透明&lt;/h1&gt;&lt;p&gt;现微软不提供任务栏全透明&lt;/p&gt;
+&lt;h4 id=&quot;不借助软件可实现半透明，实现步骤&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Centos8开启BBR</title>
